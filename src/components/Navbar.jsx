@@ -7,7 +7,6 @@ export const Navbar = ({ currentTab, setCurrentTab, onOpenLockedModal }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { soundEnabled, playCalmTone } = useSensory();
 
-  // Navigation tabs with locked states for upcoming protected modules
   const navItems = [
     { id: 'home', label: 'الرئيسية', isLocked: false },
     { id: 'activities', label: 'عالم الطفل والأنشطة', isLocked: false, isLive: true },
@@ -31,7 +30,6 @@ export const Navbar = ({ currentTab, setCurrentTab, onOpenLockedModal }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16">
           
-          {/* Brand: "بَطَل" */}
           <motion.div 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -49,7 +47,6 @@ export const Navbar = ({ currentTab, setCurrentTab, onOpenLockedModal }) => {
             </span>
           </motion.div>
 
-          {/* Desktop Navigation Menu */}
           <nav className="hidden md:flex items-center gap-1 lg:gap-1.5">
             {navItems.map((item) => {
               const isActive = currentTab === item.id;
@@ -74,7 +71,6 @@ export const Navbar = ({ currentTab, setCurrentTab, onOpenLockedModal }) => {
                     <Lock className="w-3 h-3 text-gray-400 opacity-60" />
                   )}
 
-                  {/* Active Animated Bottom Indicator */}
                   {isActive && (
                     <motion.div
                       layoutId="activeTabIndicator"
@@ -87,7 +83,6 @@ export const Navbar = ({ currentTab, setCurrentTab, onOpenLockedModal }) => {
             })}
           </nav>
 
-          {/* Mobile Menu Trigger */}
           <div className="flex md:hidden items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -100,7 +95,6 @@ export const Navbar = ({ currentTab, setCurrentTab, onOpenLockedModal }) => {
         </div>
       </div>
 
-      {/* Mobile Drawer with Smooth Slide Animation */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 
