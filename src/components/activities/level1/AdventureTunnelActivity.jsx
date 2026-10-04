@@ -7,7 +7,7 @@ export const AdventureTunnelActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, markActivityComplete, addStar } = useSensory();
 
   const [score, setScore] = useState(0);
-  const [tunnelPos, setTunnelPos] = useState(0); // 0 (Entry) to 100 (Exit)
+  const [tunnelPos, setTunnelPos] = useState(0); 
   const [isTrainerVisible, setIsTrainerVisible] = useState(true);
   const [isShaking, setIsShaking] = useState(false);
   const [tunnelsCompleted, setTunnelsCompleted] = useState(0);
@@ -23,7 +23,6 @@ export const AdventureTunnelActivity = ({ onFinish }) => {
     const nextPos = tunnelPos + 25;
 
     if (nextPos >= 100) {
-      // Reached exit! Warm Hug reward & Eye Contact
       playCustomSound('bakh');
       addStar(1);
 
@@ -46,7 +45,6 @@ export const AdventureTunnelActivity = ({ onFinish }) => {
       }
     } else {
       setTunnelPos(nextPos);
-      // Toggle trainer peekaboo appearance at exit
       setIsTrainerVisible((prev) => !prev);
     }
   };
@@ -68,7 +66,6 @@ export const AdventureTunnelActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-6 max-w-3xl mx-auto shadow-soft">
-      {/* Header */}
       <div className="flex flex-wrap justify-between items-center mb-6 pb-4 border-b border-cream-300 gap-3">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-900 border border-orange-300 text-xs font-bold mb-1">
@@ -121,22 +118,18 @@ export const AdventureTunnelActivity = ({ onFinish }) => {
           </p>
 
           <div className="bg-white border border-cream-300 rounded-3xl p-6 text-center shadow-soft relative min-h-[320px] flex flex-col justify-between">
-            {/* Interactive Tunnel View */}
             <motion.div
               animate={{
                 x: isShaking ? [-8, 8, -8, 0] : 0,
               }}
               className="relative h-48 bg-gradient-to-r from-amber-100 via-orange-100 to-amber-200 rounded-2xl border-2 border-orange-300 flex items-center justify-between p-4 overflow-hidden shadow-inner"
             >
-              {/* Entry Trainer 1 */}
               <div className="flex flex-col items-center z-10">
                 <span className="text-4xl">👨‍🏫</span>
                 <span className="text-[10px] font-bold text-orange-950">مدرب المدخل</span>
               </div>
 
-              {/* Tunnel Tube Body */}
               <div className="flex-1 mx-4 h-24 bg-gradient-to-r from-orange-400/80 via-amber-400/80 to-yellow-400/80 rounded-full border-4 border-dashed border-white shadow-md relative flex items-center overflow-hidden">
-                {/* Child moving inside tunnel */}
                 <motion.div
                   style={{ left: `${tunnelPos}%` }}
                   animate={{ x: '-50%' }}
@@ -146,7 +139,6 @@ export const AdventureTunnelActivity = ({ onFinish }) => {
                 </motion.div>
               </div>
 
-              {/* Exit Trainer 2 Peekaboo */}
               <div className="flex flex-col items-center z-10 min-w-[70px]">
                 <AnimatePresence mode="wait">
                   {isTrainerVisible ? (
@@ -166,7 +158,6 @@ export const AdventureTunnelActivity = ({ onFinish }) => {
               </div>
             </motion.div>
 
-            {/* Tunnel Interactive Actions */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
               <button
                 onClick={handleAdvanceInTunnel}
