@@ -7,7 +7,7 @@ export const EyeDirectionActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, markActivityComplete, addStar } = useSensory();
 
   const [score, setScore] = useState(0);
-  const [targetDir, setTargetDir] = useState('right'); // 'left' | 'right' | 'up' | 'down'
+  const [targetDir, setTargetDir] = useState('right'); 
   const [characterPos, setCharacterPos] = useState({ x: 50, y: 50 });
   const [successMoves, setSuccessMoves] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -34,7 +34,6 @@ export const EyeDirectionActivity = ({ onFinish }) => {
       setSuccessMoves(newMoves);
       setScore(newScore);
 
-      // Move character position based on eye direction
       setCharacterPos((prev) => ({
         x: Math.max(15, Math.min(85, prev.x + dirObj.dx)),
         y: Math.max(15, Math.min(85, prev.y + dirObj.dy)),
@@ -46,7 +45,6 @@ export const EyeDirectionActivity = ({ onFinish }) => {
           markActivityComplete('eye-direction-l1');
         }, 700);
       } else {
-        // Pick new target direction
         const nextDirs = directions.filter((d) => d.key !== targetDir);
         const randDir = nextDirs[Math.floor(Math.random() * nextDirs.length)];
         setTargetDir(randDir.key);
@@ -97,7 +95,7 @@ export const EyeDirectionActivity = ({ onFinish }) => {
           <div className="w-20 h-20 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
             <Award className="w-10 h-10" />
           </div>
-          <h3 className="text-2xl font-black font-cairo text-cream-950 mb-2">استجابة وتتبع بنظرة العين ممتاز! 🎉👀</h3>
+          <h3 className="text-2xl font-black font-cairo text-cream-950 mb-2">استجابة وتتبع بنظرة العين ممتاز! </h3>
           <p className="text-cream-800 mb-6 text-base max-w-md mx-auto">
             نجحت في توجيه الحركة حسب اتجاه النظر وتبادل الأدوار وحصلت على <strong>{score} نقطة</strong>!
           </p>
@@ -119,15 +117,12 @@ export const EyeDirectionActivity = ({ onFinish }) => {
           </p>
 
           <div className="bg-white border border-cream-300 rounded-3xl p-6 text-center shadow-soft relative min-h-[340px] flex flex-col justify-between">
-            {/* Field Area */}
             <div className="relative h-56 bg-gradient-to-tr from-cyan-900 to-indigo-950 rounded-2xl border-2 border-cyan-800 p-4 overflow-hidden shadow-inner">
-              {/* Eye Prompt Banner */}
               <div className="inline-flex items-center gap-2 bg-amber-400 text-amber-950 px-4 py-1.5 rounded-full text-xs font-black shadow animate-pulse">
                 <Eye className="w-4 h-4" />
                 <span>حرك عينك باتجاه: {directions.find((d) => d.key === targetDir)?.label}</span>
               </div>
 
-              {/* Moving Bird/Character based on Eye Look */}
               <motion.div
                 style={{ left: `${characterPos.x}%`, top: `${characterPos.y}%` }}
                 animate={{ x: '-50%', y: '-50%' }}
@@ -138,7 +133,6 @@ export const EyeDirectionActivity = ({ onFinish }) => {
               </motion.div>
             </div>
 
-            {/* Direction Control Buttons */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
               {directions.map((dir) => {
                 const IconComp = dir.icon;
