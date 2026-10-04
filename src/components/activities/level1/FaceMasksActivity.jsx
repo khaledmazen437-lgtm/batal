@@ -66,7 +66,6 @@ export const FaceMasksActivity = ({ onFinish }) => {
     if (isCompleted) return;
 
     if (isCovered) {
-      // Reveal face ("بخ!") and speak character voice
       playCustomSound('bakh');
       addStar(1);
       triggerParticles();
@@ -106,7 +105,6 @@ export const FaceMasksActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-6 max-w-3xl mx-auto shadow-soft">
-      {/* Header */}
       <div className="flex flex-wrap justify-between items-center mb-6 pb-4 border-b border-cream-300 gap-3">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-100 text-pink-900 border border-pink-300 text-xs font-bold mb-1">
@@ -158,7 +156,6 @@ export const FaceMasksActivity = ({ onFinish }) => {
              اضغط على الشال المغطي للوجه لتكتشف القناع وتسمع صوته ينطق بالنطق العربي (بخ! )!
           </p>
 
-          {/* Mask Selector Bar */}
           <div className="flex justify-center items-center gap-2 mb-6 flex-wrap">
             {masks.map((mask, idx) => (
               <button
@@ -178,9 +175,7 @@ export const FaceMasksActivity = ({ onFinish }) => {
             ))}
           </div>
 
-          {/* Interactive Peek-a-boo Face Screen */}
           <div className="bg-white border border-cream-300 rounded-3xl p-8 text-center shadow-soft relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden">
-            {/* Particle stars explosion */}
             <AnimatePresence>
               {particles.map((p) => (
                 <motion.div
