@@ -11,7 +11,6 @@ const MORNING_STEPS = [
 
 export const RoutineSequencerActivity = ({ onFinish }) => {
   const { playCalmTone, markActivityComplete, addStar } = useSensory();
-  // Start with shuffled steps
   const [currentOrder, setCurrentOrder] = useState([
     MORNING_STEPS[2], // Clothes
     MORNING_STEPS[0], // Wake
@@ -31,7 +30,6 @@ export const RoutineSequencerActivity = ({ onFinish }) => {
     newItems[targetIndex] = temp;
     setCurrentOrder(newItems);
     
-    // Check if sorted
     const isSorted = newItems.every((item, idx) => item.order === idx + 1);
     if (isSorted) {
       setIsSuccess(true);
@@ -53,7 +51,6 @@ export const RoutineSequencerActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-6 sm:p-8 max-w-2xl mx-auto shadow-soft">
-      {/* Header */}
       <div className="flex justify-between items-center mb-6 pb-4 border-b border-cream-300">
         <div className="flex items-center gap-2">
           <div className="p-2 bg-amber-100 rounded-xl text-amber-800">
@@ -118,7 +115,6 @@ export const RoutineSequencerActivity = ({ onFinish }) => {
                 </div>
               </div>
 
-              {/* Move Buttons */}
               <div className="flex items-center gap-1.5">
                 <button
                   disabled={idx === 0}
