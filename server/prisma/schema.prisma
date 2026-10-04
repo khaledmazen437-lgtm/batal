@@ -17,11 +17,11 @@ enum Role {
 }
 
 enum ActivityCategory {
-  EMOTIONAL_BEHAVIORAL    // المهارات السلوكية والانفعالية
-  SENSORY_INTEGRATION     // التكامل الحسي والتركيز
-  DAILY_ROUTINE           // الروتين والاستقلالية اليومية
-  SPEECH_COMMUNICATION    // التواصل والنطق واللغة
-  SOCIAL_INTERACTION      // المهارات الاجتماعية والتفاعل
+  EMOTIONAL_BEHAVIORAL
+  SENSORY_INTEGRATION
+  DAILY_ROUTINE
+  SPEECH_COMMUNICATION
+  SOCIAL_INTERACTION
 }
 
 enum DifficultyLevel {
@@ -31,28 +31,27 @@ enum DifficultyLevel {
 }
 
 enum SensoryLevel {
-  LOW_SOOTHING    // منخفض مهدئ
-  BALANCED        // معتدل
-  DYNAMIC         // ديناميكي
+  LOW_SOOTHING
+  BALANCED
+  DYNAMIC
 }
 
 // 1. Users Model (الأهالي، الأطباء، المشرفون)
 model User {
-  id            String         @id @default(uuid())
-  email         String         @unique
-  passwordHash  String
-  fullName      String
-  phoneNumber   String?
-  role          Role           @default(PARENT)
-  avatarUrl     String?
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
+  id           String         @id @default(uuid())
+  email        String         @unique
+  passwordHash String
+  fullName     String
+  phoneNumber  String?
+  role         Role           @default(PARENT)
+  avatarUrl    String?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
 
-  // Relationships
-  children      ChildProfile[]
+  children     ChildProfile[]
   doctorProfile DoctorProfile?
-  forumPosts    ForumPost[]
-  comments      ForumComment[]
+  forumPosts   ForumPost[]
+  comments     ForumComment[]
 }
 
 // 2. Child Profile Model (ملف الطفل وتفضيلاته الحسية)
@@ -62,7 +61,7 @@ model ChildProfile {
   name               String
   birthDate          DateTime
   gender             String?
-  autismSpectrumRank String?                 // مثلا: خفيف، متوسط، عالي الأداء
+  autismSpectrumRank String?
   soundSensitivity   Boolean                 @default(false)
   favoriteColorTheme String?                 @default("cream")
   avatarEmoji        String?                 @default("🌟")
@@ -70,7 +69,6 @@ model ChildProfile {
   createdAt          DateTime                @default(now())
   updatedAt          DateTime                @updatedAt
 
-  // Relationships
   parent             User                    @relation(fields: [parentId], references: [id], onDelete: Cascade)
   activityRecords    ChildActivityProgress[]
   assignedDoctorId   String?
@@ -80,38 +78,36 @@ model ChildProfile {
 // 3. Activity Model (الأنشطة والتدريبات التأهيلية)
 model Activity {
   id               String                  @id @default(uuid())
-  title            String                  // عنوان النشاط
+  title            String
   slug             String                  @unique
-  category         ActivityCategory        // الفئة المعمارية
+  category         ActivityCategory
   description      String                  @db.Text
   iconEmoji        String                  @default("🎮")
   difficulty       DifficultyLevel         @default(BEGINNER)
   sensoryLevel     SensoryLevel            @default(LOW_SOOTHING)
   estimatedMinutes Int                     @default(5)
-  interactiveData  Json?                   // محتوى النشاط وأسئلته وبياناته
+  interactiveData  Json?
   isActive         Boolean                 @default(true)
   createdAt        DateTime                @default(now())
   updatedAt        DateTime                @updatedAt
 
-  // Relationships
   progressLogs     ChildActivityProgress[]
 }
 
 // 4. Progress & Analytics Model (سجلات تقدم الطفل)
 model ChildActivityProgress {
-  id               String       @id @default(uuid())
-  childId          String
-  activityId       String
-  accuracyScore    Float        // نسبة الدقة من 100
-  durationSeconds  Int          // مدة الجلسة بالثواني
-  attemptsCount    Int          @default(1)
-  starsEarned      Int          @default(1)
-  behaviorNotes    String?      @db.Text
-  completedAt      DateTime     @default(now())
+  id              String       @id @default(uuid())
+  childId         String
+  activityId      String
+  accuracyScore   Float
+  durationSeconds Int
+  attemptsCount   Int          @default(1)
+  starsEarned     Int          @default(1)
+  behaviorNotes   String?      @db.Text
+  completedAt     DateTime     @default(now())
 
-  // Relationships
-  child            ChildProfile @relation(fields: [childId], references: [id], onDelete: Cascade)
-  activity         Activity     @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  child           ChildProfile @relation(fields: [childId], references: [id], onDelete: Cascade)
+  activity        Activity     @relation(fields: [activityId], references: [id], onDelete: Cascade)
 }
 
 // 5. Doctor Profile & Consultations (المرحلة الثالثة)
@@ -129,14 +125,14 @@ model DoctorProfile {
 }
 
 model Appointment {
-  id               String         @id @default(uuid())
-  doctorId         String
-  parentName       String
-  childName        String
-  scheduledAt      DateTime
-  status           String         @default("PENDING") // PENDING, CONFIRMED, COMPLETED
-  videoRoomUrl     String?
-  doctor           DoctorProfile  @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  id           String         @id @default(uuid())
+  doctorId     String
+  parentName   String
+  childName    String
+  scheduledAt  DateTime
+  status       String         @default("PENDING")
+  videoRoomUrl String?
+  doctor       DoctorProfile  @relation(fields: [doctorId], references: [id], onDelete: Cascade)
 }
 
 // 6. Community & Articles (المرحلة الثانية)
