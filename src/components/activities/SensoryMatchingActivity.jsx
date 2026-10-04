@@ -98,7 +98,6 @@ export const SensoryMatchingActivity = ({ onFinish }) => {
         </div>
       ) : (
         <>
-          {/* Source Elements */}
           <div className="mb-6">
             <p className="text-sm font-bold text-cream-800 mb-3 text-center">
               1. اضْغَطْ عَلَى الشَّكْلِ هُنَا:
@@ -134,13 +133,11 @@ export const SensoryMatchingActivity = ({ onFinish }) => {
             {feedback || "اخْتَرْ شَكْلاً مِنْ الأَعْلَى ثُمَّ ابْحَثْ عَنْ مَثِيلِهِ فِي الْأَسْفَل 🍃"}
           </div>
 
-          {/* Target Match Zone */}
           <div>
             <p className="text-sm font-bold text-cream-800 mb-3 text-center">
               2. طَابِقْ مَعَ الْمَكَانِ الْمُنَاسِب:
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {/* Shuffled targets */}
               {[SHAPES_DATA[2], SHAPES_DATA[0], SHAPES_DATA[3], SHAPES_DATA[1]].map((target) => {
                 const isMatched = matchedIds.includes(target.id);
                 return (
