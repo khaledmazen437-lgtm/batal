@@ -18,7 +18,6 @@ export const CelebrationModal = () => {
           transition={{ type: 'spring', damping: 22, stiffness: 320 }}
           className="relative w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 border border-cream-300 shadow-2xl text-center overflow-hidden"
         >
-          {/* Close Button */}
           <button
             onClick={closeCelebration}
             className="absolute top-4 left-4 p-2 rounded-full text-gray-500 hover:text-burgundy-950 hover:bg-gray-100 transition-all cursor-pointer z-10"
@@ -27,7 +26,6 @@ export const CelebrationModal = () => {
             <X className="w-5 h-5" />
           </button>
 
-          {/* Natural Child Rehabilitation Photo */}
           <div
             onClick={() => playClappingAndCheer()}
             className="relative mx-auto w-32 h-32 sm:w-36 sm:h-36 mb-5 rounded-full overflow-hidden border-4 border-amber-300 shadow-md cursor-pointer group"
@@ -45,7 +43,6 @@ export const CelebrationModal = () => {
             </div>
           </div>
 
-          {/* Clean Main Voice Title */}
           <motion.h2
             onClick={() => playClappingAndCheer()}
             initial={{ scale: 0.95 }}
@@ -57,9 +54,7 @@ export const CelebrationModal = () => {
             شاطر شاطر يا بطل!
           </motion.h2>
 
-          {/* Actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            {/* Replay Cheering Sound Button */}
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.95 }}
@@ -70,7 +65,6 @@ export const CelebrationModal = () => {
               <span>إعادة سماع الصوت</span>
             </motion.button>
 
-            {/* Continue Button */}
             <motion.button
               whileHover={{ scale: 1.04, y: -1 }}
               whileTap={{ scale: 0.95 }}
