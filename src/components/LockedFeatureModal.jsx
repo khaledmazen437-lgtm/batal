@@ -11,7 +11,6 @@ export const LockedFeatureModal = ({ isOpen, onClose, featureName, onGoToActivit
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
       <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-gray-200 relative text-center">
         
-        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-4 left-4 p-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
@@ -19,12 +18,10 @@ export const LockedFeatureModal = ({ isOpen, onClose, featureName, onGoToActivit
           <X className="w-5 h-5" />
         </button>
 
-        {/* Lock Animation Icon */}
         <div className="w-20 h-20 rounded-3xl bg-amber-50 border-2 border-amber-200 text-amber-600 flex items-center justify-center text-3xl mx-auto mb-4 shadow-sm">
           <Lock className="w-10 h-10" />
         </div>
 
-        {/* Title */}
         <span className="inline-block text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full mb-2">
           قريباً • جاري العمل والتجهيز
         </span>
@@ -37,7 +34,6 @@ export const LockedFeatureModal = ({ isOpen, onClose, featureName, onGoToActivit
           يتم حالياً تطوير هذه الخدمة للمراحل القادمة. التركيز الأساسي في المرحلة الحالية على <strong>عالم الطفل والأنشطة التأهيلية</strong> ليقوم الأطباء بتجربتها وتقييمها.
         </p>
 
-        {/* Action Button */}
         <button
           onClick={() => {
             onClose();
