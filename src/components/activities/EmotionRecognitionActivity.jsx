@@ -45,7 +45,7 @@ export const EmotionRecognitionActivity = ({ onFinish }) => {
   const { playCalmTone, markActivityComplete, addStar, playWrongFeedback } = useSensory();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [feedbackState, setFeedbackState] = useState(null); // 'correct' | 'try-again' | null
+  const [feedbackState, setFeedbackState] = useState(null); 
   const [isCompleted, setIsCompleted] = useState(false);
 
   const currentQuestion = EMOTION_SCENARIOS[currentIndex];
@@ -86,7 +86,7 @@ export const EmotionRecognitionActivity = ({ onFinish }) => {
         <div className="w-20 h-20 bg-burgundy-100 text-burgundy-800 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
           <Award className="w-10 h-10" />
         </div>
-        <h3 className="text-2xl font-black font-cairo text-burgundy-950 mb-2">أَحْسَنْتَ يَا بَطَل! 🎉</h3>
+        <h3 className="text-2xl font-black font-cairo text-burgundy-950 mb-2">أَحْسَنْتَ يَا بَطَل! </h3>
         <p className="text-cream-800 text-lg mb-6">
           لَقَدْ تَعَرَّفْتَ عَلَى جَمِيعِ الْمَشَاعِرِ بِشَكْلٍ رَائِع وَهَادِئ!
         </p>
@@ -114,7 +114,6 @@ export const EmotionRecognitionActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-6 sm:p-8 max-w-2xl mx-auto shadow-soft">
-      {/* Progress & Indicator */}
       <div className="flex justify-between items-center mb-6 pb-4 border-b border-cream-300">
         <div className="flex items-center gap-2">
           <span className="px-3 py-1 bg-burgundy-100 text-burgundy-900 rounded-full text-xs font-bold">
@@ -125,7 +124,6 @@ export const EmotionRecognitionActivity = ({ onFinish }) => {
           </span>
         </div>
         
-        {/* Visual Progress Steps */}
         <div className="flex gap-2">
           {EMOTION_SCENARIOS.map((_, idx) => (
             <div
@@ -142,7 +140,6 @@ export const EmotionRecognitionActivity = ({ onFinish }) => {
         </div>
       </div>
 
-      {/* Main Situation Card */}
       <div className="bg-cream-100/90 border border-cream-300 rounded-2xl p-6 text-center mb-8 relative">
         <div className="text-6xl mb-4 animate-gentle-float select-none">
           {currentQuestion.situationImage}
@@ -152,7 +149,6 @@ export const EmotionRecognitionActivity = ({ onFinish }) => {
         </h4>
       </div>
 
-      {/* Options Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         {currentQuestion.options.map((option) => {
           const isSelected = selectedOption === option.id;
@@ -178,7 +174,6 @@ export const EmotionRecognitionActivity = ({ onFinish }) => {
         })}
       </div>
 
-      {/* Calming Feedback Area */}
       {feedbackState === 'correct' && (
         <div className="p-4 bg-emerald-100 border border-emerald-300 text-emerald-900 rounded-2xl flex items-center justify-center gap-3 animate-fade-in font-bold text-center">
           <Sparkles className="w-5 h-5 text-emerald-700" />
