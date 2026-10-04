@@ -7,7 +7,7 @@ export const GazeFixationTimerActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, addStar, markActivityComplete } = useSensory();
 
   const [isTracking, setIsTracking] = useState(false);
-  const [fixationTime, setFixationTime] = useState(0); // Seconds focused
+  const [fixationTime, setFixationTime] = useState(0); 
   const [targetPosition, setTargetPosition] = useState({ x: 50, y: 50 });
   const [score, setScore] = useState(0);
   const [successfulHits, setSuccessfulHits] = useState(0);
@@ -16,7 +16,6 @@ export const GazeFixationTimerActivity = ({ onFinish }) => {
   const timerRef = useRef(null);
   const targetGoal = 5;
 
-  // Smooth circular & linear pursuit motion paths
   const pathWaypoints = [
     { x: 20, y: 30 },
     { x: 80, y: 30 },
@@ -32,7 +31,6 @@ export const GazeFixationTimerActivity = ({ onFinish }) => {
     setFixationTime(0);
   };
 
-  // Timer counter for eye fixation duration
   useEffect(() => {
     if (isTracking && !isCompleted) {
       timerRef.current = setInterval(() => {
@@ -44,7 +42,6 @@ export const GazeFixationTimerActivity = ({ onFinish }) => {
     return () => clearInterval(timerRef.current);
   }, [isTracking, isCompleted]);
 
-  // Target movement loop
   useEffect(() => {
     if (!isTracking || isCompleted) return;
 
@@ -89,7 +86,6 @@ export const GazeFixationTimerActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-6 max-w-3xl mx-auto shadow-soft font-cairo">
-      {/* Header */}
       <div className="flex flex-wrap justify-between items-center mb-6 pb-4 border-b border-cream-300 gap-3">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-900 border border-indigo-300 text-xs font-bold mb-1">
@@ -138,7 +134,6 @@ export const GazeFixationTimerActivity = ({ onFinish }) => {
         </motion.div>
       ) : (
         <div>
-          {/* Clinical Diagnostic Banner */}
           <div className="bg-white border border-cream-300 rounded-2xl p-4 mb-5 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm font-medium text-cream-900 shadow-sm gap-3">
             <div className="flex items-center gap-2">
               <Activity className="w-5 h-5 text-indigo-700 shrink-0" />
@@ -151,7 +146,6 @@ export const GazeFixationTimerActivity = ({ onFinish }) => {
             </div>
           </div>
 
-          {/* Interactive Gaze Arena */}
           <div className="bg-gradient-to-b from-burgundy-950 via-purple-950 to-burgundy-950 border-4 border-burgundy-800 rounded-3xl h-[360px] relative overflow-hidden shadow-2xl flex items-center justify-center">
             {!isTracking ? (
               <div className="text-center text-white space-y-4 relative z-10">
@@ -180,7 +174,6 @@ export const GazeFixationTimerActivity = ({ onFinish }) => {
                 onClick={handleCatchTarget}
                 className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20"
               >
-                {/* Glowing 3D Sensory Gaze Orb */}
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 1.2, repeat: Infinity }}
