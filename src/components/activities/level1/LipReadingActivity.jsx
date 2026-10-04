@@ -57,7 +57,6 @@ export const LipReadingActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-6 max-w-3xl mx-auto shadow-soft">
-      {/* Header */}
       <div className="flex flex-wrap justify-between items-center mb-6 pb-4 border-b border-cream-300 gap-3">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100 text-teal-900 border border-teal-300 text-xs font-bold mb-1">
@@ -88,7 +87,7 @@ export const LipReadingActivity = ({ onFinish }) => {
           <div className="w-20 h-20 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
             <Award className="w-10 h-10" />
           </div>
-          <h3 className="text-2xl font-black font-cairo text-cream-950 mb-2">قراءة شفاه وانتباه بصري خارق! 🎉🤫</h3>
+          <h3 className="text-2xl font-black font-cairo text-cream-950 mb-2">قراءة شفاه وانتباه بصري خارق! </h3>
           <p className="text-cream-800 mb-6 text-base max-w-md mx-auto">
             نجحت في التعرف على جميع الكلمات من حركة الشفاه وتعبيرات الوجه الصامتة وحصلت على <strong>{score} نقطة</strong>!
           </p>
@@ -132,7 +131,6 @@ export const LipReadingActivity = ({ onFinish }) => {
               </h4>
             </div>
 
-            {/* Multiple Choice Word Options */}
             <div className="grid grid-cols-3 gap-3 mt-2">
               {currentCard.options.map((opt, idx) => (
                 <button
