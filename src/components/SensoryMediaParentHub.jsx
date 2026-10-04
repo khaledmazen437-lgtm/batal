@@ -358,7 +358,6 @@ export const SensoryMediaParentHub = () => {
 
     if (trackId === 1) {
       // Track 1: Natural Birds Chirp & Gentle Breeze
-      // Wind background
       const bufferSize = ctx.sampleRate * 2;
       const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
       const output = buffer.getChannelData(0);
@@ -379,7 +378,6 @@ export const SensoryMediaParentHub = () => {
       windNoise.start(now);
       activeNodesRef.current.push(windNoise, windFilter);
 
-      // Periodic Bird Chirps
       const playBirdChirp = () => {
         if (!audioCtxRef.current || audioCtxRef.current.state === 'closed') return;
         const cTime = ctx.currentTime;
@@ -408,7 +406,6 @@ export const SensoryMediaParentHub = () => {
 
     } else if (trackId === 2) {
       // Track 2: Stream Brook & Raindrops
-      // Water stream continuous noise
       const bufferSize = ctx.sampleRate * 2;
       const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
       const output = buffer.getChannelData(0);
@@ -428,7 +425,6 @@ export const SensoryMediaParentHub = () => {
       waterNoise.start(now);
       activeNodesRef.current.push(waterNoise, waterFilter);
 
-      // Raindrops hitting leaves
       const playRaindrop = () => {
         if (!audioCtxRef.current || audioCtxRef.current.state === 'closed') return;
         const cTime = ctx.currentTime;
@@ -635,212 +631,7 @@ export const SensoryMediaParentHub = () => {
     setActiveSection(null);
   };
 
-  // Detailed Interactive Section Workspace View
   if (activeSection) {
     const currentSectionInfo = sectionsData.find(s => s.id === activeSection);
 
     return (
-      <motion.div 
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -15 }}
-        transition={{ duration: 0.35 }}
-        className="max-w-6xl mx-auto my-10 font-cairo"
-      >
-        {/* Workspace Top Header & Back Button */}
-        <div className="flex justify-between items-center mb-8">
-          <motion.button
-            whileHover={{ scale: 1.03, x: 2 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={handleBackToGrid}
-            className="btn-dribbble-glass border border-cream-300 shadow-sm"
-          >
-            <ArrowRight className="w-4 h-4" />
-            <span>العودة للأقسام الرئيسية</span>
-          </motion.button>
-          <span className={`px-4 py-1.5 rounded-full text-xs font-bold border ${currentSectionInfo.badgeColor}`}>
-            {currentSectionInfo.tag}
-          </span>
-        </div>
-
-        {/* Section Banner Header */}
-        <div className="bg-white border border-cream-300 rounded-3xl p-6 sm:p-8 mb-8 shadow-soft flex flex-col md:flex-row gap-6 items-center">
-          <div className="w-full md:w-56 h-40 rounded-2xl overflow-hidden border border-cream-200 shrink-0">
-            <img src={currentSectionInfo.image} alt={currentSectionInfo.title} className="w-full h-full object-cover" />
-          </div>
-          <div>
-            <h2 className="text-2xl font-black text-burgundy-950 mb-2">{currentSectionInfo.title}</h2>
-            <p className="text-sm text-cream-800 leading-relaxed font-medium">{currentSectionInfo.subtitle}</p>
-          </div>
-        </div>
-
-        {/* Render Workspace Content based on activeSection */}
-        {activeSection === 'audio' && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {SENSORY_AUDIO_TRACKS.map((track) => {
-              const isPlaying = playingAudioId === track.id;
-
-              return (
-                <div
-                  key={track.id}
-                  className={`card-3d-tilt p-6 flex flex-col justify-between border-2 transition-all ${
-                    isPlaying ? 'border-emerald-500 bg-emerald-50/80 shadow-xl ring-2 ring-emerald-300' : 'border-cream-300'
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs font-bold bg-emerald-50 text-emerald-900 px-3 py-1 rounded-full border border-emerald-200">
-                        {track.category}
-                      </span>
-                      {isPlaying && (
-                        <span className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-700 animate-pulse">
-                          <Volume2 className="w-4 h-4 text-emerald-600 animate-bounce" /> جاري التشغيل المهدئ
-                        </span>
-                      )}
-                    </div>
-                    <h4 className="font-extrabold text-base text-burgundy-950 mb-2 leading-snug">{track.title}</h4>
-                    <p className="text-xs text-cream-700 leading-relaxed font-medium mb-6">{track.description}</p>
-                  </div>
-
-                  <button
-                    onClick={() => handleToggleAudio(track)}
-                    className={`w-full py-3 rounded-2xl font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                      isPlaying 
-                        ? 'bg-gradient-to-r from-emerald-600 to-emerald-700 text-white shadow-md ring-2 ring-emerald-300' 
-                        : 'btn-dribbble-primary'
-                    }`}
-                  >
-                    {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                    <span>{isPlaying ? 'إيقاف الصوت الطبيعي' : 'تشغيل صوت الطبيعة والتأهيل'}</span>
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {activeSection === 'videos' && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {YOUTUBE_VIDEOS.map((vid) => {
-              return (
-                <div key={vid.id} className="bg-white border border-cream-300 rounded-3xl p-5 shadow-soft flex flex-col justify-between space-y-4">
-                  <div>
-                    <div className="w-full h-52 rounded-2xl overflow-hidden border border-cream-200 bg-black relative mb-3 shadow-inner">
-                      <iframe
-                        src={vid.embedUrl}
-                        title={vid.title}
-                        className="w-full h-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <span className="text-[11px] font-bold bg-amber-100 text-amber-900 px-3 py-1 rounded-full border border-amber-300 inline-block">
-                        {vid.category}
-                      </span>
-                      <h4 className="font-extrabold text-xs sm:text-sm text-burgundy-950 leading-relaxed pt-1">{vid.title}</h4>
-                      <p className="text-[11px] text-cream-700 leading-normal">{vid.description}</p>
-                    </div>
-                  </div>
-
-                  <div className="pt-2 border-t border-cream-200">
-                    <a
-                      href={vid.watchUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-dribbble-primary text-xs py-2.5 px-3 flex items-center justify-center gap-2 font-bold w-full text-center shadow-md"
-                    >
-                      <span>تشغيل المقطع في يوتيوب ↗</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-amber-300" />
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {activeSection === 'tips' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {PARENT_TIPS.map((tip) => (
-              <div key={tip.id} className="bg-white border border-cream-300 rounded-3xl p-6 shadow-soft space-y-4 text-right flex flex-col justify-between">
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full border ${tip.badgeColor || 'bg-emerald-100 text-emerald-900 border-emerald-300'}`}>
-                      {tip.category}
-                    </span>
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                  </div>
-                  <h4 className="font-extrabold text-base text-burgundy-950 leading-snug">{tip.title}</h4>
-                  <p className="text-xs text-cream-800 leading-relaxed font-medium bg-cream-50/80 p-3.5 rounded-2xl border border-cream-200">
-                    {tip.text}
-                  </p>
-
-                  {tip.points && tip.points.length > 0 && (
-                    <ul className="space-y-2 pt-1 pr-2">
-                      {tip.points.map((pt, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-xs text-cream-900 leading-relaxed font-medium">
-                          <span className="w-1.5 h-1.5 rounded-full bg-burgundy-600 mt-1.5 shrink-0" />
-                          <span>{pt}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </motion.div>
-    );
-  }
-
-  // Main Standalone 3-Section Cards Grid (Matching 3D Level Cards layout)
-  return (
-    <div className="my-8 font-cairo max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Main 3 Standalone Section Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {sectionsData.map((section) => (
-          <motion.div
-            key={section.id}
-            whileHover={{ y: -10, scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 200, damping: 18 }}
-            className="card-3d-tilt p-6 flex flex-col justify-between group cursor-pointer"
-          >
-            <div>
-              {/* Image Header */}
-              <div className="w-full h-52 rounded-2xl overflow-hidden mb-5 border border-cream-200 relative group-hover:scale-102 transition-transform duration-300">
-                <img src={section.image} alt={section.title} className="w-full h-full object-cover" />
-                <div className="absolute top-3 right-3">
-                  <span className={`px-3 py-1 rounded-full text-xs font-bold border shadow-sm backdrop-blur-md ${section.badgeColor}`}>
-                    {section.tag}
-                  </span>
-                </div>
-              </div>
-
-              {/* Title & Subtitle */}
-              <h3 className="text-xl font-bold text-cream-950 mb-2 leading-snug group-hover:text-burgundy-900 transition-colors">
-                {section.title}
-              </h3>
-              <p className="text-xs text-cream-700 leading-relaxed mb-6">
-                {section.subtitle}
-              </p>
-            </div>
-
-            {/* Action Button */}
-            <div className="pt-4 border-t border-cream-200">
-              <motion.button
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleOpenSection(section.id)}
-                className="btn-dribbble-primary w-full py-3 px-4 rounded-2xl text-sm font-bold shadow-lg"
-              >
-                <span>{section.buttonText}</span>
-              </motion.button>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  );
-};
