@@ -7,7 +7,7 @@ export const CupsShellEyeActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, markActivityComplete, addStar, speakArabic, playWrongFeedback } = useSensory();
 
   const [score, setScore] = useState(0);
-  const [winningCup, setWinningCup] = useState(1); // 0, 1, or 2
+  const [winningCup, setWinningCup] = useState(1); 
   const [revealedCup, setRevealedCup] = useState(null);
   const [isShuffling, setIsShuffling] = useState(false);
   const [winsCount, setWinsCount] = useState(0);
@@ -92,7 +92,6 @@ export const CupsShellEyeActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-6 max-w-3xl mx-auto shadow-soft">
-      {/* Header */}
       <div className="flex flex-wrap justify-between items-center mb-6 pb-4 border-b border-cream-300 gap-3">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold mb-1">
@@ -145,7 +144,6 @@ export const CupsShellEyeActivity = ({ onFinish }) => {
           </p>
 
           <div className="bg-white border border-cream-300 rounded-3xl p-6 text-center shadow-soft relative min-h-[360px] flex flex-col justify-between overflow-hidden">
-            {/* Particle stars explosion */}
             <AnimatePresence>
               {particles.map((p) => (
                 <motion.div
@@ -161,7 +159,6 @@ export const CupsShellEyeActivity = ({ onFinish }) => {
               ))}
             </AnimatePresence>
 
-            {/* Trainer Eye Gaze Hint Display */}
             <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-4 flex items-center justify-between">
               <div className="flex items-center gap-3 text-right">
                 <motion.div
@@ -188,7 +185,6 @@ export const CupsShellEyeActivity = ({ onFinish }) => {
               </button>
             </div>
 
-            {/* 3 Cups Shell Game View */}
             <div className="grid grid-cols-3 gap-4 items-end py-6 px-4 bg-cream-100/50 rounded-2xl border border-cream-200 min-h-[200px]">
               {[0, 1, 2].map((cupIdx) => {
                 const isSelected = revealedCup === cupIdx;
@@ -205,7 +201,6 @@ export const CupsShellEyeActivity = ({ onFinish }) => {
                     onClick={() => handlePickCup(cupIdx)}
                     className="flex flex-col items-center cursor-pointer group"
                   >
-                    {/* Cup Icon */}
                     <div
                       className={`w-24 h-28 rounded-t-3xl border-b-8 flex flex-col items-center justify-center relative transition-all shadow-lg ${
                         isSelected
@@ -218,7 +213,6 @@ export const CupsShellEyeActivity = ({ onFinish }) => {
                       <span className="text-4xl select-none"></span>
                       <span className="text-[10px] font-black mt-1">كوب {cupIdx + 1}</span>
 
-                      {/* Hidden Prize inside winning cup */}
                       <AnimatePresence>
                         {isSelected && isWinner && (
                           <motion.div
