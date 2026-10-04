@@ -61,7 +61,6 @@ export const VisualCombinedActivity = ({ onFinish }) => {
 
   return (
     <div className="space-y-6">
-      {/* Category Filter & Sub Activity Tabs Switcher */}
       <div className="bg-white border border-cream-300 rounded-3xl p-5 shadow-soft space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-cream-200 pb-3">
           <div className="flex items-center gap-2 text-sm font-black font-cairo text-purple-950">
@@ -69,7 +68,6 @@ export const VisualCombinedActivity = ({ onFinish }) => {
             <span>المستوى الثالث: التواصل مع الأشياء والأشخاص (13 نشاطاً تفاعلياً كاملاً):</span>
           </div>
 
-          {/* Category Filter Pills */}
           <div className="flex items-center gap-1.5 flex-wrap">
             <Filter className="w-4 h-4 text-cream-600 ml-1" />
             {categories.map((cat) => (
@@ -88,7 +86,6 @@ export const VisualCombinedActivity = ({ onFinish }) => {
           </div>
         </div>
 
-        {/* Sub Activities Grid Tabs */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 max-h-[300px] overflow-y-auto p-1 scrollbar-thin">
           {filteredSubActivities.map((sub) => {
             const isActive = activeSubTab === sub.id;
@@ -116,13 +113,11 @@ export const VisualCombinedActivity = ({ onFinish }) => {
         </div>
       </div>
 
-      {/* Activity Audio Guide & Spoken Explanation */}
       <ActivityAudioGuide
         activityId={currentSub.id}
         title={currentSub.title}
       />
 
-      {/* Render Selected Interactive Activity */}
       <ActiveSubComponent
         onFinish={() => {
           const currentIdx = subActivities.findIndex((s) => s.id === activeSubTab);
