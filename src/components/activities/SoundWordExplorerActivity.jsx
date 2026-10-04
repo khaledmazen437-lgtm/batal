@@ -18,15 +18,13 @@ export const SoundWordExplorerActivity = ({ onFinish }) => {
     setActiveWord(item);
     playCalmTone('gentle-tap');
 
-    // Speech synthesis if available for Arabic
     if ('speechSynthesis' in window) {
       try {
         const utterance = new SpeechSynthesisUtterance(item.word);
         utterance.lang = 'ar-SA';
-        utterance.rate = 0.85; // Calming gentle pace
+        utterance.rate = 0.85; 
         window.speechSynthesis.speak(utterance);
       } catch (e) {
-        // audio fallback
       }
     }
 
@@ -52,7 +50,6 @@ export const SoundWordExplorerActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-6 sm:p-8 max-w-2xl mx-auto shadow-soft">
-      {/* Header */}
       <div className="flex justify-between items-center mb-6 pb-4 border-b border-cream-300">
         <div>
           <span className="px-3 py-1 bg-emerald-100 text-emerald-900 rounded-full text-xs font-bold">
@@ -86,7 +83,6 @@ export const SoundWordExplorerActivity = ({ onFinish }) => {
         </button>
       </div>
 
-      {/* Word Grid Selection */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {VOCAB_DATA.map((item) => {
           const isSelected = activeWord.id === item.id;
