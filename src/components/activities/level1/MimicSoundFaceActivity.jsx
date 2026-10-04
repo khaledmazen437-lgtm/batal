@@ -50,7 +50,6 @@ export const MimicSoundFaceActivity = ({ onFinish }) => {
   const targetGoal = soundPrompts.length;
 
   const handlePlayPromptSound = () => {
-    // Play synthesized cartoon audio sound + speak Arabic speech
     playCustomSound(currentPrompt.soundType);
     speakArabic(currentPrompt.speech);
   };
@@ -58,7 +57,6 @@ export const MimicSoundFaceActivity = ({ onFinish }) => {
   const handleMimicSound = () => {
     if (isCompleted) return;
 
-    // Play prompt sound & speech
     handlePlayPromptSound();
     addStar(1);
 
@@ -89,7 +87,6 @@ export const MimicSoundFaceActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-6 max-w-3xl mx-auto shadow-soft">
-      {/* Header */}
       <div className="flex flex-wrap justify-between items-center mb-6 pb-4 border-b border-cream-300 gap-3">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-100 text-violet-900 border border-violet-300 text-xs font-bold mb-1">
@@ -142,7 +139,6 @@ export const MimicSoundFaceActivity = ({ onFinish }) => {
           </p>
 
           <div className="bg-white border border-cream-300 rounded-3xl p-6 text-center shadow-soft relative min-h-[340px] flex flex-col justify-between">
-            {/* Trainer Sound Prompt Card */}
             <div className="bg-violet-50 border border-violet-200 rounded-2xl p-6 mb-4 flex flex-col items-center justify-center relative overflow-hidden">
               <button
                 onClick={handlePlayPromptSound}
@@ -168,7 +164,6 @@ export const MimicSoundFaceActivity = ({ onFinish }) => {
               </p>
             </div>
 
-            {/* Mimic Action Trigger */}
             <button
               onClick={handleMimicSound}
               className="w-full py-4 rounded-2xl bg-violet-600 hover:bg-violet-700 text-white font-black text-sm shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-98"
