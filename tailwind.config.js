@@ -8,7 +8,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Off-White & Creamy Palette (Primary calming backgrounds)
         cream: {
           50: '#FDFBF7',
           100: '#FBF7F0',
@@ -21,7 +20,6 @@ export default {
           800: '#6E6355',
           900: '#524A3F',
         },
-        // Burgundy Palette (Secondary CTA and accents)
         burgundy: {
           50: '#FDF2F4',
           100: '#FCE7EA',
@@ -35,7 +33,6 @@ export default {
           900: '#641728',
           950: '#3D0713',
         },
-        // Autism Sensory Support Accents
         sensory: {
           sky: '#E0F2FE',
           skyText: '#0369A1',
