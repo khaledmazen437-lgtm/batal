@@ -5,14 +5,13 @@ import { useSensory } from '../../../context/SensoryContext';
 export const GlowingLampsActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, markActivityComplete, addStar } = useSensory();
 
-  // Dedicated score counter for Glowing Lamps Activity
+  
   const [lampsScore, setLampsScore] = useState(0);
   const [targetGoal] = useState(8);
   const [litCount, setLitCount] = useState(0);
   const [activeLampIndex, setActiveLampIndex] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
 
-  // 6 Glowing colorful lamps data
   const lampsData = [
     { id: 0, name: 'لمبة صفراء دافئة', color: 'yellow', bgOff: 'bg-yellow-950/20 border-yellow-800/40 text-yellow-900', bgOn: 'bg-gradient-to-r from-yellow-300 to-amber-400 border-yellow-200 text-yellow-950 shadow-yellow-400/80' },
     { id: 1, name: 'لمبة زرقاء سماوية', color: 'sky', bgOff: 'bg-sky-950/20 border-sky-800/40 text-sky-900', bgOn: 'bg-gradient-to-r from-sky-300 to-cyan-400 border-sky-200 text-sky-950 shadow-sky-400/80' },
@@ -22,7 +21,6 @@ export const GlowingLampsActivity = ({ onFinish }) => {
     { id: 5, name: 'لمبة برتقالية بهيجة', color: 'orange', bgOff: 'bg-orange-950/20 border-orange-800/40 text-orange-900', bgOn: 'bg-gradient-to-r from-orange-300 to-amber-500 border-orange-200 text-orange-950 shadow-orange-400/80' },
   ];
 
-  // Rotate active lamp index randomly every few seconds if child hasn't clicked
   useEffect(() => {
     if (isCompleted) return;
     const interval = setInterval(() => {
@@ -41,7 +39,6 @@ export const GlowingLampsActivity = ({ onFinish }) => {
     playCustomSound('button_click');
     addStar(1);
 
-    // Update dedicated score for Glowing Lamps activity
     const newScore = lampsScore + 12;
     const newLit = litCount + 1;
     setLampsScore(newScore);
@@ -51,7 +48,6 @@ export const GlowingLampsActivity = ({ onFinish }) => {
       setIsCompleted(true);
       markActivityComplete('glowing-lamps-l1');
     } else {
-      // Pick next random glowing lamp
       setActiveLampIndex((idx + 1 + Math.floor(Math.random() * 4)) % lampsData.length);
     }
   };
@@ -65,7 +61,6 @@ export const GlowingLampsActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-6 max-w-3xl mx-auto shadow-soft">
-      {/* Game Header & Dedicated Score Counter */}
       <div className="flex flex-wrap justify-between items-center mb-6 pb-4 border-b border-cream-300 gap-3">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold mb-1">
@@ -75,7 +70,6 @@ export const GlowingLampsActivity = ({ onFinish }) => {
           <h3 className="text-xl font-bold font-cairo text-burgundy-950">تتبع واستكشاف اللمض المضيئة</h3>
         </div>
 
-        {/* Dedicated Game Score Counter */}
         <div className="flex items-center gap-3">
           <div className="bg-amber-100 border border-amber-300 px-4 py-2 rounded-2xl flex items-center gap-2 shadow-sm">
             <Trophy className="w-5 h-5 text-amber-600" />
@@ -123,7 +117,6 @@ export const GlowingLampsActivity = ({ onFinish }) => {
              انظر إلى اللوحة، تتبع اللمبة التي تضيء بلون جديد واضغط عليها لإحراز النقاط!
           </p>
 
-          {/* Lamps Grid Panel */}
           <div className="bg-slate-900 border-4 border-slate-800 rounded-3xl p-8 min-h-[300px] flex items-center justify-center shadow-inner">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 w-full max-w-lg">
               {lampsData.map((lamp) => {
