@@ -9,10 +9,8 @@ export const Footer = ({ setCurrentTab }) => {
     <footer className="bg-white border-t border-gray-200 pt-12 pb-8 text-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           
-          {/* Col 1: Brand Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <span className="text-3xl font-black font-cairo text-burgundy-950 tracking-tight">
@@ -25,7 +23,6 @@ export const Footer = ({ setCurrentTab }) => {
             </p>
           </div>
 
-          {/* Col 2: Quick Links */}
           <div className="space-y-3">
             <h4 className="font-bold text-sm font-cairo text-gray-900">روابط سريعة</h4>
             <ul className="space-y-2 text-xs">
@@ -57,7 +54,6 @@ export const Footer = ({ setCurrentTab }) => {
             </ul>
           </div>
 
-          {/* Col 3: Contact Details (الموقع، الواتساب، الجيميل) */}
           <div className="space-y-3">
             <h4 className="font-bold text-sm font-cairo text-gray-900">بيانات التواصل والمقر</h4>
             <ul className="space-y-2.5 text-xs text-gray-600">
@@ -89,7 +85,6 @@ export const Footer = ({ setCurrentTab }) => {
             </ul>
           </div>
 
-          {/* Col 4: Engineers & Company Supervision */}
           <div className="space-y-3">
             <h4 className="font-bold text-sm font-cairo text-gray-900">فريق التنفيذ والإشراف</h4>
             <div className="p-3 bg-gray-50 border border-gray-200 rounded-2xl space-y-1.5 text-xs">
@@ -102,7 +97,6 @@ export const Footer = ({ setCurrentTab }) => {
 
         </div>
 
-        {/* Bottom Bar: Copyright and Team Credit */}
         <div className="pt-6 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-2">
           <p>© {new Date().getFullYear()} شركة MHD - جميع الحقوق محفوظة | مَنَصَّـة بَـطَـل</p>
           <p className="font-medium text-gray-700">
