@@ -3,11 +3,9 @@ import { Award, RotateCcw, Trophy, Check, X, Eye, Sparkles, Layers, UserCheck } 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSensory } from '../../../context/SensoryContext';
 
-// Helper component for rendering realistic 3D Extruded Isometric Blocks
 const Isometric3DCube = ({ colorName, baseColor, isStacked = false }) => {
   return (
     <div className={`relative w-40 h-11 rounded-2xl ${baseColor} border-t-2 border-white/60 border-b-[5px] border-black/40 shadow-lg flex items-center justify-between px-4 text-white font-extrabold text-xs select-none ${isStacked ? 'opacity-90' : 'hover:scale-[1.03] transition-transform'}`}>
-      {/* 3D Top Highlight Glare */}
       <div className="absolute top-1 left-3 right-3 h-2 bg-white/40 rounded-full blur-[1px] pointer-events-none" />
       
       <span>{colorName}</span>
@@ -23,7 +21,7 @@ export const NonVerbalCubesActivity = ({ onFinish }) => {
 
   const [score, setScore] = useState(0);
   const [stackedCubes, setStackedCubes] = useState([]);
-  const [trainerTargetIdx, setTrainerTargetIdx] = useState(0); // Index of intended block
+  const [trainerTargetIdx, setTrainerTargetIdx] = useState(0); 
   const [isCompleted, setIsCompleted] = useState(false);
 
   const cubesPool = [
@@ -38,7 +36,6 @@ export const NonVerbalCubesActivity = ({ onFinish }) => {
   const handleSelectCube = (cubeIdx) => {
     if (isCompleted || stackedCubes.some((c) => c.id === cubesPool[cubeIdx].id)) return;
 
-    // Check if child selected the cube indicated by trainer non-verbal nod/eye gaze
     if (cubeIdx === trainerTargetIdx) {
       playCalmTone('success');
       addStar(1);
@@ -54,7 +51,6 @@ export const NonVerbalCubesActivity = ({ onFinish }) => {
           markActivityComplete('non-verbal-cubes-l1');
         }, 700);
       } else {
-        // Find next unstacked cube as target
         const unstackedIndices = cubesPool
           .map((c, i) => i)
           .filter((i) => !newStacked.some((sc) => sc.id === cubesPool[i].id));
@@ -63,7 +59,6 @@ export const NonVerbalCubesActivity = ({ onFinish }) => {
         }
       }
     } else {
-      // Trainer shakes head side-to-side (NO signal)
       playCalmTone('gentle-tap');
     }
   };
@@ -77,7 +72,6 @@ export const NonVerbalCubesActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-6 max-w-3xl mx-auto shadow-soft font-cairo">
-      {/* Header */}
       <div className="flex flex-wrap justify-between items-center mb-6 pb-4 border-b border-cream-300 gap-3">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-900 border border-blue-300 text-xs font-bold mb-1">
@@ -129,7 +123,6 @@ export const NonVerbalCubesActivity = ({ onFinish }) => {
           </p>
 
           <div className="bg-white border border-cream-300 rounded-3xl p-6 text-center shadow-soft relative min-h-[340px] flex flex-col justify-between">
-            {/* Non-Verbal Trainer Gaze & Nod Guidance Card */}
             <div className="bg-blue-50/90 border border-blue-200 rounded-2xl p-4 mb-4 flex items-center justify-between shadow-sm">
               <div className="flex items-center gap-3 text-right">
                 <div className="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-md">
@@ -147,7 +140,6 @@ export const NonVerbalCubesActivity = ({ onFinish }) => {
               </span>
             </div>
 
-            {/* Stack & Selection Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
               {/* 3D Cube Tower Area */}
               <div className="bg-gradient-to-b from-cream-100 to-cream-200 border border-cream-300 rounded-2xl h-56 flex flex-col-reverse items-center justify-start p-4 gap-2 shadow-inner">
@@ -172,7 +164,6 @@ export const NonVerbalCubesActivity = ({ onFinish }) => {
                 )}
               </div>
 
-              {/* Cube Selection 3D Buttons */}
               <div className="space-y-3">
                 {cubesPool.map((cube, idx) => {
                   const isStacked = stackedCubes.some((c) => c.id === cube.id);
