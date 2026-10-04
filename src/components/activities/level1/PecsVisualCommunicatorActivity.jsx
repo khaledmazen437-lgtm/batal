@@ -147,7 +147,6 @@ export const PecsVisualCommunicatorActivity = ({ onFinish }) => {
             )}
           </div>
 
-          {/* PECS 3D Tactile Cards Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {PECS_CARDS.map((card) => (
               <motion.div
