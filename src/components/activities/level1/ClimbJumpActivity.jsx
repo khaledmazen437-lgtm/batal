@@ -7,7 +7,7 @@ export const ClimbJumpActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, markActivityComplete, addStar } = useSensory();
 
   const [score, setScore] = useState(0);
-  const [count, setCount] = useState(0); // 0 to 5
+  const [count, setCount] = useState(0); 
   const [isPermissionGiven, setIsPermissionGiven] = useState(false);
   const [jumpsDone, setJumpsDone] = useState(0);
   const [isJumping, setIsJumping] = useState(false);
@@ -23,7 +23,6 @@ export const ClimbJumpActivity = ({ onFinish }) => {
     setCount(nextCount);
 
     if (nextCount === 5) {
-      // Permission signal unlocked!
       setIsPermissionGiven(true);
     }
   };
@@ -116,19 +115,15 @@ export const ClimbJumpActivity = ({ onFinish }) => {
           </p>
 
           <div className="bg-white border border-cream-300 rounded-3xl p-6 text-center shadow-soft relative min-h-[320px] flex flex-col justify-between">
-            {/* Table & Jump Platform Area */}
             <div className="relative h-48 bg-amber-50 rounded-2xl border border-amber-200 flex items-end justify-center pb-4 overflow-hidden shadow-inner">
-              {/* Short Table Platform */}
               <div className="w-48 h-16 bg-amber-800 rounded-t-2xl border-t-4 border-amber-900 relative flex items-center justify-center shadow-md">
                 <span className="text-[11px] font-bold text-amber-100">منضدة الطفل القصيرة 🪑</span>
               </div>
 
-              {/* Soft Landing Cushion Pad */}
               <div className="w-64 h-6 bg-emerald-600 rounded-xl absolute bottom-1 border-t-2 border-emerald-700 shadow flex items-center justify-center text-[10px] text-white font-bold">
                 وسادة القفز الآمنة 🟢
               </div>
 
-              {/* Child Jumping Character */}
               <motion.div
                 animate={{
                   y: isJumping ? [0, -70, 0] : count > 0 ? -10 : 0,
@@ -142,7 +137,6 @@ export const ClimbJumpActivity = ({ onFinish }) => {
                 </div>
               </motion.div>
 
-              {/* Visual Permission Signal Badge */}
               <AnimatePresence>
                 {isPermissionGiven && (
                   <motion.div
@@ -158,7 +152,6 @@ export const ClimbJumpActivity = ({ onFinish }) => {
               </AnimatePresence>
             </div>
 
-            {/* Countdown and Action Buttons */}
             <div className="mt-4 space-y-3">
               <div className="flex justify-center gap-2">
                 {[1, 2, 3, 4, 5].map((num) => (
