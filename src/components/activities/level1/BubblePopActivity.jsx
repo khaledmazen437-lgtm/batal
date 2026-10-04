@@ -5,14 +5,12 @@ import { useSensory } from '../../../context/SensoryContext';
 export const BubblePopActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, markActivityComplete, addStar } = useSensory();
   
-  // Dedicated score counter for Soap Bubbles activity
   const [gameScore, setGameScore] = useState(0);
   const [targetGoal] = useState(10);
   const [poppedCount, setPoppedCount] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   const [popEffects, setPopEffects] = useState([]);
 
-  // Floating bubbles state array inside the frame
   const [bubbles, setBubbles] = useState([
     { id: 1, x: 20, y: 30, size: 64, color: 'from-pink-300/80 to-purple-300/60 border-pink-400', speedX: 0.4, speedY: -0.5 },
     { id: 2, x: 60, y: 70, size: 72, color: 'from-sky-300/80 to-teal-300/60 border-sky-400', speedX: -0.3, speedY: -0.4 },
@@ -21,7 +19,6 @@ export const BubblePopActivity = ({ onFinish }) => {
     { id: 5, x: 25, y: 75, size: 60, color: 'from-purple-300/80 to-indigo-300/60 border-purple-400', speedX: 0.3, speedY: -0.5 },
   ]);
 
-  // Animation loop for gentle floating movement of bubbles inside the framed area
   useEffect(() => {
     if (isCompleted) return;
     const interval = setInterval(() => {
@@ -30,9 +27,7 @@ export const BubblePopActivity = ({ onFinish }) => {
           let newX = b.x + b.speedX;
           let newY = b.y + b.speedY;
 
-          // Bounce off left/right frame borders
           if (newX <= 5 || newX >= 88) b.speedX *= -1;
-          // Bounce off top/bottom frame borders
           if (newY <= 5 || newY >= 82) b.speedY *= -1;
 
           return {
@@ -47,7 +42,6 @@ export const BubblePopActivity = ({ onFinish }) => {
     return () => clearInterval(interval);
   }, [isCompleted]);
 
-  // Handle popping a bubble ("يفسيه")
   const handlePopBubble = (bubbleId, e) => {
     if (isCompleted) return;
 
@@ -76,13 +70,11 @@ export const BubblePopActivity = ({ onFinish }) => {
 
     addStar(1);
 
-    // Update dedicated score counter
     const newScore = gameScore + 10;
     const newPopped = poppedCount + 1;
     setGameScore(newScore);
     setPoppedCount(newPopped);
 
-    // Respawn popped bubble at a new random position inside frame
     setBubbles(prev =>
       prev.map(b => {
         if (b.id === bubbleId) {
@@ -98,7 +90,6 @@ export const BubblePopActivity = ({ onFinish }) => {
       })
     );
 
-    // Check completion condition
     if (newPopped >= targetGoal) {
       setIsCompleted(true);
       if (typeof speakArabic === 'function') {
@@ -126,7 +117,6 @@ export const BubblePopActivity = ({ onFinish }) => {
           <h3 className="text-xl font-bold font-cairo text-burgundy-950">تتبع وفرقعة فقاعات الصابون</h3>
         </div>
 
-        {/* Dedicated Game Score Counter */}
         <div className="flex items-center gap-3">
           <div className="bg-amber-100 border border-amber-300 px-4 py-2 rounded-2xl flex items-center gap-2 shadow-sm">
             <Trophy className="w-5 h-5 text-amber-600" />
@@ -174,13 +164,10 @@ export const BubblePopActivity = ({ onFinish }) => {
              انظر إلى الشاشة، تتبع الفقاعات التي تطفو واضغط عليها لفرقعتها وإحراز النقاط!
           </p>
 
-          {/* Framed Interactive Screen Area */}
           <div className="bg-gradient-to-b from-sky-50 via-indigo-50/40 to-blue-50 border-4 border-indigo-200 rounded-3xl h-[340px] relative overflow-hidden shadow-inner cursor-pointer select-none">
-            {/* Soft decorative light highlights inside frame */}
             <div className="absolute top-4 left-4 w-24 h-24 bg-white/40 rounded-full blur-xl pointer-events-none" />
             <div className="absolute bottom-4 right-4 w-32 h-32 bg-sky-200/30 rounded-full blur-xl pointer-events-none" />
 
-            {/* Interactive Floating Soap Bubbles */}
             {bubbles.map((b) => (
               <button
                 key={b.id}
@@ -198,7 +185,6 @@ export const BubblePopActivity = ({ onFinish }) => {
               </button>
             ))}
 
-            {/* Visual Pop Burst Effects */}
             {popEffects.map((p) => (
               <div
                 key={p.id}
