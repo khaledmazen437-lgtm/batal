@@ -7,7 +7,7 @@ export const SwingFlyActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, markActivityComplete, addStar } = useSensory();
 
   const [score, setScore] = useState(0);
-  const [flightAltitude, setFlightAltitude] = useState(0); // 0 to 100 meters
+  const [flightAltitude, setFlightAltitude] = useState(0);
   const [eyeContactSecs, setEyeContactSecs] = useState(0);
   const [isFlying, setIsFlying] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);

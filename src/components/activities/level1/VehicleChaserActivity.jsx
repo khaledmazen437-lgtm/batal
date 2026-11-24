@@ -12,7 +12,6 @@ export const VehicleChaserActivity = ({ onFinish }) => {
   const [selectedVehicle, setSelectedVehicle] = useState('car'); // 'car' | 'plane' | 'rocket'
   const [isCompleted, setIsCompleted] = useState(false);
 
-  // Vehicles config
   const vehicles = {
     car: { name: 'السيارة الملونة', icon: '🚗', color: 'bg-rose-500' },
     plane: { name: 'الطيارة السريعة', icon: '✈️', color: 'bg-sky-500' },
@@ -32,7 +31,6 @@ export const VehicleChaserActivity = ({ onFinish }) => {
     // Move vehicle towards ball position smoothly
     setVehiclePos({ x: targetBall.x, y: targetBall.y });
 
-    // Update dedicated score for vehicle chaser (+15 points)
     const newScore = chaserScore + 15;
     const newChased = chasedCount + 1;
     setChaserScore(newScore);

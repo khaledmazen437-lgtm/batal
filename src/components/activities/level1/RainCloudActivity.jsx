@@ -9,7 +9,7 @@ export const RainCloudActivity = ({ onFinish }) => {
   const [rainScore, setRainScore] = useState(0);
   const [targetGoal] = useState(6);
   const [caughtCount, setCaughtCount] = useState(0);
-  const [bowlWaterLevel, setBowlWaterLevel] = useState(10); 
+  const [bowlWaterLevel, setBowlWaterLevel] = useState(10);
   const [isCompleted, setIsCompleted] = useState(false);
 
   const [raindrops, setRaindrops] = useState([
@@ -25,7 +25,7 @@ export const RainCloudActivity = ({ onFinish }) => {
         prev.map(drop => {
           let newY = drop.y + drop.speed;
           if (newY >= 75) {
-            newY = 12; 
+            newY = 12;
           }
           return { ...drop, y: newY };
         })
@@ -149,7 +149,7 @@ export const RainCloudActivity = ({ onFinish }) => {
                 >
                   <div className="w-full h-1.5 bg-white/70 absolute top-0 animate-pulse" />
                   <span className="text-xs font-black text-white drop-shadow font-cairo z-10">
-                    وعاء المجمع: {bowlWaterLevel}% 
+                    وعاء المجمع: {bowlWaterLevel}%
                   </span>
                 </div>
               </div>

@@ -5,7 +5,6 @@ import { useSensory } from '../../../context/SensoryContext';
 export const GlowingLampsActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, markActivityComplete, addStar } = useSensory();
 
-  
   const [lampsScore, setLampsScore] = useState(0);
   const [targetGoal] = useState(8);
   const [litCount, setLitCount] = useState(0);

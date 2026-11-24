@@ -7,7 +7,7 @@ export const EyeDirectionActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, markActivityComplete, addStar } = useSensory();
 
   const [score, setScore] = useState(0);
-  const [targetDir, setTargetDir] = useState('right'); 
+  const [targetDir, setTargetDir] = useState('right');
   const [characterPos, setCharacterPos] = useState({ x: 50, y: 50 });
   const [successMoves, setSuccessMoves] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -129,7 +129,7 @@ export const EyeDirectionActivity = ({ onFinish }) => {
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 className="absolute text-5xl filter drop-shadow-lg select-none"
               >
-                
+
               </motion.div>
             </div>
 

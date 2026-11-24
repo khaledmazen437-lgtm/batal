@@ -183,7 +183,7 @@ export const ShadowTheaterActivity = ({ onFinish }) => {
                   style={{ left: `${p.x}%`, top: `${p.y}%` }}
                   className="absolute text-xl pointer-events-none select-none z-30"
                 >
-                  
+
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -221,7 +221,7 @@ export const ShadowTheaterActivity = ({ onFinish }) => {
                     {currentPuppet.icon}
                   </span>
                   <div className="absolute -bottom-3 bg-amber-400 text-amber-950 font-black px-3 py-1 rounded-full text-xs shadow">
-                    اضغط ليتحدث الحيوان! 
+                    اضغط ليتحدث الحيوان!
                   </div>
                 </div>
 

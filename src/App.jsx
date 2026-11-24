@@ -51,12 +51,12 @@ function MainAppContent() {
 
   return (
     <div className="flex flex-col min-h-screen bg-cream-100 selection:bg-burgundy-100 selection:text-burgundy-950 relative overflow-x-hidden">
-      <Navbar 
-        currentTab={currentTab} 
-        setCurrentTab={setCurrentTab} 
+      <Navbar
+        currentTab={currentTab}
+        setCurrentTab={setCurrentTab}
         onOpenLockedModal={handleOpenLockedModal}
       />
-      
+
       <main className="flex-grow relative">
         <AnimatePresence mode="wait">
           <motion.div
@@ -68,8 +68,8 @@ function MainAppContent() {
             className="w-full"
           >
             {currentTab === 'home' && (
-              <HomePage 
-                setCurrentTab={setCurrentTab} 
+              <HomePage
+                setCurrentTab={setCurrentTab}
                 onOpenLockedModal={handleOpenLockedModal}
               />
             )}

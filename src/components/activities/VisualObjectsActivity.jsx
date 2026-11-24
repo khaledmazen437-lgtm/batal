@@ -44,7 +44,6 @@ export const VisualObjectsActivity = ({ onFinish }) => {
     { id: 'rain_cloud', title: 'السحابة والماء والمنخل ', tag: 'النشاط 7', cat: 'objects', component: RainCloudActivity },
     { id: 'surprise_bag', title: 'كيس المفاجآت والظلال ', tag: 'النشاط 8', cat: 'objects', component: SurpriseBagShadowActivity },
 
-    // Interactive Activities Suite
     { id: 'face_masks', title: 'ألعاب الوجه والأقنعة (بخ!) ', tag: 'النشاط 9', cat: 'faces', component: FaceMasksActivity },
     { id: 'swing_fly', title: 'التأرجح والطيران في الجو ', tag: 'النشاط 10', cat: 'movement', component: SwingFlyActivity },
     { id: 'climb_jump', title: 'التسلق والقفز (العد 1-5) ', tag: 'النشاط 11', cat: 'movement', component: ClimbJumpActivity },
@@ -140,4 +139,3 @@ export const VisualObjectsActivity = ({ onFinish }) => {
     </div>
   );
 };
-

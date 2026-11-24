@@ -26,7 +26,6 @@ export const SurpriseBagShadowActivity = ({ onFinish }) => {
     { id: 10, name: 'المكعب الخشبي', icon: '🧩' },
   ];
 
-  // Stage items configuration
   // Stage 1: 1 item | Stage 2: 2 items | Stage 3: 3 items | Stage 4: 4 items
   const getStageItems = (stage) => {
     return itemsPool.slice(0, stage);
@@ -34,13 +33,11 @@ export const SurpriseBagShadowActivity = ({ onFinish }) => {
 
   const stageItems = getStageItems(currentStage);
 
-  // Open Bag for current stage
   const handleOpenBag = () => {
     playCustomSound('bag_zipper');
     setIsBagOpened(true);
   };
 
-  // Match shadow target
   const handleMatchShadow = (targetItem) => {
     if (matchedInStage.includes(targetItem.id)) return;
 
@@ -53,7 +50,6 @@ export const SurpriseBagShadowActivity = ({ onFinish }) => {
     setBagScore(newScore);
     setMatchedInStage(newMatched);
 
-    // If all items in this stage are matched, advance to next stage!
     if (newMatched.length === stageItems.length) {
       if (currentStage < 4) {
         setTimeout(() => {
@@ -144,7 +140,7 @@ export const SurpriseBagShadowActivity = ({ onFinish }) => {
               >
                 <Gift className="w-20 h-20 animate-bounce" />
                 <span className="text-sm font-bold font-cairo text-white">
-                  افتح كيس المفاجآت (المرحلة {currentStage}) 
+                  افتح كيس المفاجآت (المرحلة {currentStage})
                 </span>
               </button>
             </div>

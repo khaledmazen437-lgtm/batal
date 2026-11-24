@@ -324,4 +324,3 @@ export const AUDIO_REGISTRY = {
     volume: 0.95,
   },
 };
-

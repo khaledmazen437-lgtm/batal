@@ -29,8 +29,8 @@ export const Navbar = ({ currentTab, setCurrentTab, onOpenLockedModal }) => {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200/80 shadow-xs font-cairo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16">
-          
-          <motion.div 
+
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
@@ -63,7 +63,7 @@ export const Navbar = ({ currentTab, setCurrentTab, onOpenLockedModal }) => {
                   }`}
                 >
                   <span>{item.label}</span>
-                  
+
                   {item.isLive && (
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" title="متاح للتجربة الفورية"></span>
                   )}
@@ -97,7 +97,7 @@ export const Navbar = ({ currentTab, setCurrentTab, onOpenLockedModal }) => {
 
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -112,8 +112,8 @@ export const Navbar = ({ currentTab, setCurrentTab, onOpenLockedModal }) => {
                   handleNavClick(item);
                 }}
                 className={`w-full text-right px-3.5 py-2.5 rounded-xl text-xs font-bold flex items-center justify-between transition-colors cursor-pointer ${
-                  currentTab === item.id 
-                    ? 'bg-burgundy-50 text-burgundy-950 font-black' 
+                  currentTab === item.id
+                    ? 'bg-burgundy-50 text-burgundy-950 font-black'
                     : 'text-gray-800 hover:bg-gray-50'
                 }`}
               >

@@ -24,10 +24,8 @@ export const NameResponseCallActivity = ({ onFinish }) => {
   const handleCallName = () => {
     if (isLooking) return;
 
-    // 1. Speak the call phrase first: "يا صديقي! انظر إليّ!"
     speakArabic('يا صديقي! انظر إليّ!');
 
-    // 2. Trainer turns around with warm eye contact & responds
     setTimeout(() => {
       setIsLooking(true);
       playCustomSound('gasp');

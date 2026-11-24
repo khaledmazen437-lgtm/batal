@@ -7,7 +7,7 @@ export const AdventureTunnelActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, markActivityComplete, addStar } = useSensory();
 
   const [score, setScore] = useState(0);
-  const [tunnelPos, setTunnelPos] = useState(0); 
+  const [tunnelPos, setTunnelPos] = useState(0);
   const [isTrainerVisible, setIsTrainerVisible] = useState(true);
   const [isShaking, setIsShaking] = useState(false);
   const [tunnelsCompleted, setTunnelsCompleted] = useState(0);
@@ -145,7 +145,7 @@ export const AdventureTunnelActivity = ({ onFinish }) => {
                     <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="flex flex-col items-center">
                       <span className="text-5xl animate-bounce">👩‍🏫</span>
                       <span className="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300">
-                        ظهرت بابتسامة! 
+                        ظهرت بابتسامة!
                       </span>
                     </motion.div>
                   ) : (

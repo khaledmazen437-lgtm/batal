@@ -23,7 +23,6 @@ export const GlassesPullActivity = ({ onFinish }) => {
   const handlePullGlasses = () => {
     if (!hasGlasses) return;
 
-    // 1. Remove glasses animation
     setHasGlasses(false);
     playCustomSound('bakh');
     playCalmTone('success');

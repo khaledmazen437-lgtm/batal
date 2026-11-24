@@ -46,7 +46,7 @@ export const MusicianTrainerActivity = ({ onFinish }) => {
         setTimeout(() => setActiveNoteText(''), 1500);
       }
     } else {
-      // Gentle guidance fallback
+
       playCalmTone('gentle-tap');
       speakArabic(`انظر لعين الموسيقار، هو ينظر نحو ${currentTarget.name}!`);
     }

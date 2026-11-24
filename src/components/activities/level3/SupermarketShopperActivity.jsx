@@ -57,7 +57,7 @@ export const SupermarketShopperActivity = ({ onFinish }) => {
         setStepIndex((prev) => prev + 1);
       }
     } else {
-      // Gentle wrong feedback
+
       const requestedName = shoppingRequests[stepIndex].targetId === 'apple' ? 'تفاحة حمراء' : shoppingRequests[stepIndex].targetId === 'milk' ? 'علبة حليب' : shoppingRequests[stepIndex].targetId === 'banana' ? 'موزة صفراء' : 'علبة عصير';
       playWrongFeedback(`خطأ! هذا ${item.name}، لكن البائع يطلب منك: ${requestedName}! حاول مرة ثانية يا بطل!`);
     }
