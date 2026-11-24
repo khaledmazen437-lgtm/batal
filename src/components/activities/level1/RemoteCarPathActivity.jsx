@@ -7,7 +7,7 @@ export const RemoteCarPathActivity = ({ onFinish }) => {
 
   // Dedicated score counter for Remote Car Path activity
   const [remoteScore, setRemoteScore] = useState(0);
-  const [carPos, setCarPos] = useState({ x: 50, y: 50 }); // Start in center of arena
+  const [carPos, setCarPos] = useState({ x: 50, y: 50 });
   const [carRotation, setCarRotation] = useState(0); // 0deg (up), 90deg (right), 180deg (down), 270deg (left)
   const [driveCount, setDriveCount] = useState(0);
   const [targetGoal] = useState(8);
@@ -49,7 +49,6 @@ export const RemoteCarPathActivity = ({ onFinish }) => {
     setCarRotation(newRotation);
     setCarPos({ x: newX, y: newY });
 
-    // Check collision / proximity with target checkpoint
     const dist = Math.hypot(newX - targetPos.x, newY - targetPos.y);
     if (dist < 18) {
       playCalmTone('success');
@@ -151,8 +150,8 @@ export const RemoteCarPathActivity = ({ onFinish }) => {
 
               {/* Remote Car with Directional Rotation */}
               <div
-                style={{ 
-                  left: `${carPos.x}%`, 
+                style={{
+                  left: `${carPos.x}%`,
                   top: `${carPos.y}%`,
                   transform: `translate(-50%, -50%) rotate(${carRotation}deg)`
                 }}

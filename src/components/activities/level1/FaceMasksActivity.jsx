@@ -86,7 +86,7 @@ export const FaceMasksActivity = ({ onFinish }) => {
         }, 900);
       }
     } else {
-      // Cover again
+
       playCalmTone('gentle-tap');
       setIsCovered(true);
       const nextIdx = (activeMaskIndex + 1) % masks.length;
@@ -186,7 +186,7 @@ export const FaceMasksActivity = ({ onFinish }) => {
                   style={{ left: `${p.x}%`, top: `${p.y}%` }}
                   className="absolute text-xl pointer-events-none select-none z-30"
                 >
-                  
+
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -208,7 +208,7 @@ export const FaceMasksActivity = ({ onFinish }) => {
                     </span>
                   </div>
                   <span className="text-xs font-bold text-pink-700 mt-4 animate-bounce">
-                    اضغط هنا لإزالة الغطاء واكتشاف القناع المتحدث! 
+                    اضغط هنا لإزالة الغطاء واكتشاف القناع المتحدث!
                   </span>
                 </motion.div>
               ) : (
@@ -229,7 +229,7 @@ export const FaceMasksActivity = ({ onFinish }) => {
                       }}
                       className="absolute top-2 right-2 bg-amber-400 text-amber-950 text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1 shadow hover:scale-105"
                     >
-                      <Volume2 className="w-3 h-3" /> اسمع الصوت 
+                      <Volume2 className="w-3 h-3" /> اسمع الصوت
                     </button>
                   </div>
                   <h4 className="text-lg font-black font-cairo text-burgundy-950 mt-3">

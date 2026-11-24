@@ -7,7 +7,7 @@ export const ClimbJumpActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, markActivityComplete, addStar } = useSensory();
 
   const [score, setScore] = useState(0);
-  const [count, setCount] = useState(0); 
+  const [count, setCount] = useState(0);
   const [isPermissionGiven, setIsPermissionGiven] = useState(false);
   const [jumpsDone, setJumpsDone] = useState(0);
   const [isJumping, setIsJumping] = useState(false);

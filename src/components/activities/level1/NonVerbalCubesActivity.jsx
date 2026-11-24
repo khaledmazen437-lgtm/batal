@@ -7,7 +7,7 @@ const Isometric3DCube = ({ colorName, baseColor, isStacked = false }) => {
   return (
     <div className={`relative w-40 h-11 rounded-2xl ${baseColor} border-t-2 border-white/60 border-b-[5px] border-black/40 shadow-lg flex items-center justify-between px-4 text-white font-extrabold text-xs select-none ${isStacked ? 'opacity-90' : 'hover:scale-[1.03] transition-transform'}`}>
       <div className="absolute top-1 left-3 right-3 h-2 bg-white/40 rounded-full blur-[1px] pointer-events-none" />
-      
+
       <span>{colorName}</span>
       <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-md backdrop-blur-xs">
         {isStacked ? 'تم التركيب' : 'مكعب 3D'}
@@ -21,7 +21,7 @@ export const NonVerbalCubesActivity = ({ onFinish }) => {
 
   const [score, setScore] = useState(0);
   const [stackedCubes, setStackedCubes] = useState([]);
-  const [trainerTargetIdx, setTrainerTargetIdx] = useState(0); 
+  const [trainerTargetIdx, setTrainerTargetIdx] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
 
   const cubesPool = [

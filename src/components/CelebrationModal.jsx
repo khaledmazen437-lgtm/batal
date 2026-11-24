@@ -31,10 +31,10 @@ export const CelebrationModal = () => {
             className="relative mx-auto w-32 h-32 sm:w-36 sm:h-36 mb-5 rounded-full overflow-hidden border-4 border-amber-300 shadow-md cursor-pointer group"
             title="اضغط لسماع التشجيع الصوتي المباشر"
           >
-            <img 
-              src="https://images.unsplash.com/photo-1543807535-eceef0bc6599?auto=format&fit=crop&w=400&q=80" 
+            <img
+              src="https://images.unsplash.com/photo-1543807535-eceef0bc6599?auto=format&fit=crop&w=400&q=80"
               alt="طفل بطل"
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
               <div className="w-10 h-10 rounded-full bg-white/90 text-amber-600 flex items-center justify-center shadow-md">

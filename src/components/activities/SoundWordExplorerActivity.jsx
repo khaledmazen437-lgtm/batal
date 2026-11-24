@@ -22,7 +22,7 @@ export const SoundWordExplorerActivity = ({ onFinish }) => {
       try {
         const utterance = new SpeechSynthesisUtterance(item.word);
         utterance.lang = 'ar-SA';
-        utterance.rate = 0.85; 
+        utterance.rate = 0.85;
         window.speechSynthesis.speak(utterance);
       } catch (e) {
       }

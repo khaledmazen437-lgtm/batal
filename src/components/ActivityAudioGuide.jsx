@@ -38,7 +38,7 @@ export const ActivityAudioGuide = ({ activityId, title = '', className = '' }) =
               <div className="text-xs font-bold text-amber-900">
                 <span>الهدف المباشر: {guide.goal}</span>
               </div>
-              
+
               <p className="text-xs sm:text-sm text-cream-950 leading-relaxed font-medium p-3 rounded-2xl border bg-white/80 border-cream-200/80 shadow-xs">
                 "{guide.audioScript}"
               </p>

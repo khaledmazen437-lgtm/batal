@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Gamepad2, 
-  Sparkles, 
-  CheckCircle2, 
-  Star, 
+import {
+  Gamepad2,
+  Sparkles,
+  CheckCircle2,
+  Star,
   ArrowRight,
   Eye,
   PlusCircle,
@@ -113,7 +113,7 @@ export const ActivitiesPage = () => {
   if (activeActivity) {
     const ActivityComponent = activeActivity.component;
     return (
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.98 }}
@@ -143,7 +143,7 @@ export const ActivitiesPage = () => {
     const activeLvl = visualLevels.find(l => l.id === selectedLevelId);
 
     return (
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -15 }}
@@ -240,7 +240,7 @@ export const ActivitiesPage = () => {
 
   // View 3: Dashboard View (The 3 Visual Contact Levels)
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -15 }}
@@ -274,10 +274,10 @@ export const ActivitiesPage = () => {
               <div>
                 {/* Image Header */}
                 <div className="w-full h-52 rounded-2xl overflow-hidden mb-5 border border-cream-200 relative group-hover:scale-102 transition-transform duration-300">
-                  <img 
-                    src={lvl.image} 
-                    alt={lvl.title} 
-                    className="w-full h-full object-cover" 
+                  <img
+                    src={lvl.image}
+                    alt={lvl.title}
+                    className="w-full h-full object-cover"
                   />
                   <div className="absolute top-3 right-3">
                     <span className={`px-3 py-1 rounded-full text-xs font-bold border shadow-sm backdrop-blur-md ${lvl.badgeColor}`}>

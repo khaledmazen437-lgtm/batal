@@ -30,7 +30,6 @@ export const FreezeDanceActivity = ({ onFinish }) => {
     };
   }, [isPlayingMusic, isFrozen]);
 
-  // Start Music & Dancing
   const handleStartMusic = () => {
     setIsPlayingMusic(true);
     setIsFrozen(false);
@@ -44,7 +43,6 @@ export const FreezeDanceActivity = ({ onFinish }) => {
     }, freezeDelay);
   };
 
-  // Trigger Freeze Mode
   const triggerFreeze = () => {
     setIsPlayingMusic(false);
     setIsFrozen(true);

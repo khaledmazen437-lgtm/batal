@@ -7,7 +7,7 @@ export const GazeFixationTimerActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, addStar, markActivityComplete } = useSensory();
 
   const [isTracking, setIsTracking] = useState(false);
-  const [fixationTime, setFixationTime] = useState(0); 
+  const [fixationTime, setFixationTime] = useState(0);
   const [targetPosition, setTargetPosition] = useState({ x: 50, y: 50 });
   const [score, setScore] = useState(0);
   const [successfulHits, setSuccessfulHits] = useState(0);

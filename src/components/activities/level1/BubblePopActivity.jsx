@@ -4,7 +4,7 @@ import { useSensory } from '../../../context/SensoryContext';
 
 export const BubblePopActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, markActivityComplete, addStar } = useSensory();
-  
+
   const [gameScore, setGameScore] = useState(0);
   const [targetGoal] = useState(10);
   const [poppedCount, setPoppedCount] = useState(0);

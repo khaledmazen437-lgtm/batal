@@ -36,7 +36,6 @@ enum SensoryLevel {
   DYNAMIC
 }
 
-// 1. Users Model (الأهالي، الأطباء، المشرفون)
 model User {
   id           String         @id @default(uuid())
   email        String         @unique
@@ -54,7 +53,6 @@ model User {
   comments     ForumComment[]
 }
 
-// 2. Child Profile Model (ملف الطفل وتفضيلاته الحسية)
 model ChildProfile {
   id                 String                  @id @default(uuid())
   parentId           String
@@ -75,7 +73,6 @@ model ChildProfile {
   assignedDoctor     DoctorProfile?          @relation(fields: [assignedDoctorId], references: [id])
 }
 
-// 3. Activity Model (الأنشطة والتدريبات التأهيلية)
 model Activity {
   id               String                  @id @default(uuid())
   title            String
@@ -94,7 +91,6 @@ model Activity {
   progressLogs     ChildActivityProgress[]
 }
 
-// 4. Progress & Analytics Model (سجلات تقدم الطفل)
 model ChildActivityProgress {
   id              String       @id @default(uuid())
   childId         String
@@ -110,7 +106,6 @@ model ChildActivityProgress {
   activity        Activity     @relation(fields: [activityId], references: [id], onDelete: Cascade)
 }
 
-// 5. Doctor Profile & Consultations (المرحلة الثالثة)
 model DoctorProfile {
   id               String         @id @default(uuid())
   userId           String         @unique
@@ -135,7 +130,6 @@ model Appointment {
   doctor       DoctorProfile  @relation(fields: [doctorId], references: [id], onDelete: Cascade)
 }
 
-// 6. Community & Articles (المرحلة الثانية)
 model ForumPost {
   id        String         @id @default(uuid())
   authorId  String

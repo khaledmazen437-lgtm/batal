@@ -12,10 +12,10 @@ const MORNING_STEPS = [
 export const RoutineSequencerActivity = ({ onFinish }) => {
   const { playCalmTone, markActivityComplete, addStar } = useSensory();
   const [currentOrder, setCurrentOrder] = useState([
-    MORNING_STEPS[2], // Clothes
-    MORNING_STEPS[0], // Wake
-    MORNING_STEPS[3], // Breakfast
-    MORNING_STEPS[1], // Brush
+    MORNING_STEPS[2],
+    MORNING_STEPS[0],
+    MORNING_STEPS[3],
+    MORNING_STEPS[1],
   ]);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -24,12 +24,12 @@ export const RoutineSequencerActivity = ({ onFinish }) => {
     const newItems = [...currentOrder];
     const targetIndex = index + direction;
     if (targetIndex < 0 || targetIndex >= newItems.length) return;
-    
+
     const temp = newItems[index];
     newItems[index] = newItems[targetIndex];
     newItems[targetIndex] = temp;
     setCurrentOrder(newItems);
-    
+
     const isSorted = newItems.every((item, idx) => item.order === idx + 1);
     if (isSorted) {
       setIsSuccess(true);

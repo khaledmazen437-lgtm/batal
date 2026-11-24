@@ -45,7 +45,7 @@ export const EmotionRecognitionActivity = ({ onFinish }) => {
   const { playCalmTone, markActivityComplete, addStar, playWrongFeedback } = useSensory();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [feedbackState, setFeedbackState] = useState(null); 
+  const [feedbackState, setFeedbackState] = useState(null);
   const [isCompleted, setIsCompleted] = useState(false);
 
   const currentQuestion = EMOTION_SCENARIOS[currentIndex];
@@ -56,7 +56,7 @@ export const EmotionRecognitionActivity = ({ onFinish }) => {
       setFeedbackState('correct');
       playCalmTone('success');
       addStar(2);
-      
+
       setTimeout(() => {
         if (currentIndex < EMOTION_SCENARIOS.length - 1) {
           setCurrentIndex(prev => prev + 1);
@@ -123,7 +123,7 @@ export const EmotionRecognitionActivity = ({ onFinish }) => {
             السؤال {currentIndex + 1} مِنْ {EMOTION_SCENARIOS.length}
           </span>
         </div>
-        
+
         <div className="flex gap-2">
           {EMOTION_SCENARIOS.map((_, idx) => (
             <div

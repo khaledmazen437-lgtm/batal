@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import heroImage from '../assets/Autism-01-1024x695.jpg';
-import { 
-  Gamepad2, 
-  CheckCircle2, 
-  Quote, 
-  HelpCircle, 
-  ChevronDown, 
-  ChevronUp, 
+import {
+  Gamepad2,
+  CheckCircle2,
+  Quote,
+  HelpCircle,
+  ChevronDown,
+  ChevronUp,
   ChevronRight,
   ChevronLeft,
   ArrowRight,
@@ -79,7 +79,6 @@ const BurgundyIcons = {
   )
 };
 
-// Animation Stagger Variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -93,8 +92,8 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 25 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] }
   }
@@ -102,7 +101,7 @@ const itemVariants = {
 
 export const HomePage = ({ setCurrentTab }) => {
   const { playCalmTone } = useSensory();
-  
+
   // Interactive State for FAQ
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
@@ -116,7 +115,6 @@ export const HomePage = ({ setCurrentTab }) => {
     setCurrentTab('activities');
   };
 
-  // 1. المميزات - Features Data
   const featuresList = [
     {
       id: 1,
@@ -150,7 +148,6 @@ export const HomePage = ({ setCurrentTab }) => {
     }
   ];
 
-  // 2. دور منصة بطل - Roles & Values
   const platformRoles = [
     "التصدي لتوقف التعليم بسبب الظروف الجوية أو الصحية.",
     "تقديم محتوى تعليمي وتوعوي وترفيهي للأطفال.",
@@ -160,7 +157,6 @@ export const HomePage = ({ setCurrentTab }) => {
     "مساعدة الآباء والأمهات على دعم التوازن النفسي والطبي والتعليمي لأطفالهم."
   ];
 
-  // 4. آراء المستفيدين المتحركة
   const testimonials = [
     {
       id: 1,
@@ -214,7 +210,6 @@ export const HomePage = ({ setCurrentTab }) => {
     setCurrentTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  // 5. الأسئلة الشائعة
   const faqs = [
     {
       q: "كيف تختلف منصة بطل عن المنصات التعليمية التقليدية؟",
@@ -232,13 +227,13 @@ export const HomePage = ({ setCurrentTab }) => {
 
   return (
     <div className="space-y-24 pb-20 overflow-x-hidden font-cairo">
-      
+
       {/* 1. Hero Section الفاخر جداً مع صورة الطفل الأصلية Autism-01-1024x695.jpg والأنيميشن التفاعلي */}
       <section className="relative w-full min-h-[540px] md:min-h-[620px] flex items-center justify-center overflow-hidden">
-        
+
         {/* Animated Background Glowing Orbs */}
-        <motion.div 
-          animate={{ 
+        <motion.div
+          animate={{
             y: [0, -25, 0],
             scale: [1, 1.15, 1],
             opacity: [0.35, 0.65, 0.35]
@@ -246,8 +241,8 @@ export const HomePage = ({ setCurrentTab }) => {
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-10 right-12 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl z-1 pointer-events-none"
         />
-        <motion.div 
-          animate={{ 
+        <motion.div
+          animate={{
             y: [0, 25, 0],
             scale: [1, 1.2, 1],
             opacity: [0.25, 0.55, 0.25]
@@ -258,16 +253,16 @@ export const HomePage = ({ setCurrentTab }) => {
 
         {/* Background Child Image with Smooth Dark Gradient Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImage} 
-            alt="بطل منصة التوحد" 
+          <img
+            src={heroImage}
+            alt="بطل منصة التوحد"
             className="w-full h-full object-cover object-[center_35%] transform scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-burgundy-950/85 via-black/50 to-black/40"></div>
         </div>
 
         {/* Hero Content Box with Staggered Entrance */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -308,7 +303,7 @@ export const HomePage = ({ setCurrentTab }) => {
         </div>
 
         {/* Features Staggered Grid */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -318,8 +313,8 @@ export const HomePage = ({ setCurrentTab }) => {
           {featuresList.slice(0, 3).map((item) => {
             const Icon = item.IconComponent;
             return (
-              <motion.div 
-                key={item.id} 
+              <motion.div
+                key={item.id}
                 variants={itemVariants}
                 whileHover={{ y: -8 }}
                 className="bg-white border border-cream-200 rounded-3xl p-8 flex flex-col items-center group shadow-soft hover:shadow-soft-lg transition-all duration-300"
@@ -339,7 +334,7 @@ export const HomePage = ({ setCurrentTab }) => {
         </motion.div>
 
         {/* Bottom Row Centered Features */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -349,8 +344,8 @@ export const HomePage = ({ setCurrentTab }) => {
           {featuresList.slice(3, 5).map((item) => {
             const Icon = item.IconComponent;
             return (
-              <motion.div 
-                key={item.id} 
+              <motion.div
+                key={item.id}
                 variants={itemVariants}
                 whileHover={{ y: -8 }}
                 className="bg-white border border-cream-200 rounded-3xl p-8 flex flex-col items-center group shadow-soft hover:shadow-soft-lg transition-all duration-300"
@@ -372,7 +367,7 @@ export const HomePage = ({ setCurrentTab }) => {
 
       {/* 3. دور منصة بطل الرقمية (قائمة الفحص والتحقق مع أنيميشن التفاعلات) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -391,8 +386,8 @@ export const HomePage = ({ setCurrentTab }) => {
 
               <ul className="space-y-4 pt-4">
                 {platformRoles.map((roleText, idx) => (
-                  <motion.li 
-                    key={idx} 
+                  <motion.li
+                    key={idx}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -412,7 +407,7 @@ export const HomePage = ({ setCurrentTab }) => {
 
             {/* Left Column: Photo */}
             <div className="lg:col-span-5">
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.03 }}
                 className="relative rounded-3xl overflow-hidden shadow-md border border-gray-200 group"
               >
@@ -484,7 +479,7 @@ export const HomePage = ({ setCurrentTab }) => {
 
       {/* 5. بانر ابدأ عالمك الآن مع الأثر البصري الفاخر */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           whileHover={{ scale: 1.01 }}
           className="bg-gradient-to-r from-burgundy-900 via-burgundy-950 to-burgundy-900 rounded-3xl p-8 sm:p-12 text-white shadow-soft-lg relative overflow-hidden"
         >
@@ -513,7 +508,7 @@ export const HomePage = ({ setCurrentTab }) => {
       </section>
 
       {/* 6. آراء المستفيدين المتحركة والديناميكية بـ AnimatePresence */}
-      <section 
+      <section
         className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -533,7 +528,7 @@ export const HomePage = ({ setCurrentTab }) => {
           </div>
 
           <AnimatePresence mode="wait">
-            <motion.div 
+            <motion.div
               key={currentTestimonialIndex}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -586,8 +581,8 @@ export const HomePage = ({ setCurrentTab }) => {
                   playCalmTone('gentle-tap');
                 }}
                 className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  idx === currentTestimonialIndex 
-                    ? 'w-8 bg-burgundy-800' 
+                  idx === currentTestimonialIndex
+                    ? 'w-8 bg-burgundy-800'
                     : 'w-2.5 bg-cream-300 hover:bg-cream-400'
                 }`}
                 title={`الرأي ${idx + 1}`}

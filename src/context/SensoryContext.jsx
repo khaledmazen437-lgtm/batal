@@ -24,7 +24,7 @@ export const SensoryProvider = ({ children }) => {
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [fontSizeScale, setFontSizeScale] = useState('normal');
   const [activeRole, setActiveRole] = useState('child');
-  
+
   const [childStars, setChildStars] = useState(12);
   const [completedActivities, setCompletedActivities] = useState(['emotion-1', 'sensory-1']);
 
@@ -427,7 +427,6 @@ export const SensoryProvider = ({ children }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [currentSpeakingText, setCurrentSpeakingText] = useState('');
 
-  // Stop any ongoing spoken audio or TTS speech
   const stopSpeech = () => {
     if (activeAudioRef.current) {
       try {
@@ -457,7 +456,6 @@ export const SensoryProvider = ({ children }) => {
   const speakArabic = (text, { isCelebration = false, onEnd = null } = {}) => {
     if (!soundEnabled || !text) return;
 
-    // Stop ongoing audio cleanly
     stopSpeech();
 
     const cleanText = text
@@ -530,10 +528,10 @@ export const SensoryProvider = ({ children }) => {
           osc.type = 'sine';
           osc.frequency.setValueAtTime(baseFreq, startTime);
           osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.9, startTime + 0.22);
-          
+
           gain.gain.setValueAtTime(0.2, startTime);
           gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.25);
-          
+
           osc.connect(gain);
           gain.connect(ctx.destination);
           osc.start(startTime);
@@ -704,10 +702,8 @@ export const SensoryProvider = ({ children }) => {
     }
     lastCheerTimeRef.current = now;
 
-    // Stop previous ongoing speech/audio cleanly
     stopSpeech();
 
-    // 1. Play real applause audio asset once
     playCustomSound('applause');
 
     // 2. Immediate synthesized clapping layer for instant responsiveness
@@ -726,7 +722,6 @@ export const SensoryProvider = ({ children }) => {
     }, 200);
   };
 
-  // Open the celebratory clapping modal with voice
   const triggerCelebration = ({
     title = 'شاطر شاطر يا بطل!',
     message = 'أحسنت صنعاً في هذا النشاط.',
@@ -760,7 +755,7 @@ export const SensoryProvider = ({ children }) => {
         stars: 3,
       });
     } else {
-      // If already completed once, still reward with clapping and cheering
+
       triggerCelebration({
         title: title || 'شاطر شاطر يا بطل!',
         message: message || 'ما شاء الله عليك، شاطر شاطر جداً يا عبقري!',

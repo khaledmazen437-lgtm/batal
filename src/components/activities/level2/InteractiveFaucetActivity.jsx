@@ -7,7 +7,7 @@ export const InteractiveFaucetActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, speakArabic, addStar, markActivityComplete } = useSensory();
 
   const [score, setScore] = useState(0);
-  const [waterFlow, setWaterFlow] = useState(0); // 0 (closed) | 1 (drip) | 2 (stream) | 3 (waterfall)
+  const [waterFlow, setWaterFlow] = useState(0);
   const [tappedCount, setTappedCount] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
 

@@ -4,21 +4,20 @@ import { Award, RotateCcw, Trophy, Volume2, Music, HelpCircle, CheckCircle2, Spa
 import { useSensory } from '../../../context/SensoryContext';
 
 export const SoundButtonsActivity = ({ onFinish }) => {
-  const { 
-    soundEnabled, 
-    speakArabic, 
-    playCalmTone, 
-    playCustomSound, 
-    playSynthesizedAnimalSound, 
+  const {
+    soundEnabled,
+    speakArabic,
+    playCalmTone,
+    playCustomSound,
+    playSynthesizedAnimalSound,
     playWrongFeedback,
-    triggerCelebration 
+    triggerCelebration
   } = useSensory();
 
   const [activeTabMode, setActiveTabMode] = useState('explore'); // 'explore' | 'quiz'
   const [soundScore, setSoundScore] = useState(0);
   const [playingAnimalId, setPlayingAnimalId] = useState(null);
 
-  // Quiz State
   const [quizQuestionIndex, setQuizQuestionIndex] = useState(0);
   const [quizScore, setQuizScore] = useState(0);
   const [targetQuizAnimal, setTargetQuizAnimal] = useState(null);
@@ -143,13 +142,10 @@ export const SoundButtonsActivity = ({ onFinish }) => {
     if (!soundEnabled) return;
     setPlayingAnimalId(animal.id);
 
-    // 1. Acoustic Synthesizer trigger
     playSynthesizedAnimalSound(animal.key || animal.id);
 
-    // 2. Clear Arabic voice prompt
     speakArabic(`${animal.speechText}.. ${animal.soundLabel}`);
 
-    // 3. Optional remote audio recording if present
     if (animal.audioUrl) {
       try {
         const audio = new Audio(animal.audioUrl);
@@ -168,7 +164,6 @@ export const SoundButtonsActivity = ({ onFinish }) => {
     setSoundScore((prev) => prev + 10);
   };
 
-  // Generate Quiz Round
   const startNewQuizRound = () => {
     setQuizFeedback(null);
     setSelectedCandidateId(null);
@@ -217,7 +212,7 @@ export const SoundButtonsActivity = ({ onFinish }) => {
 
   return (
     <div className="bg-cream-50 border border-cream-300 rounded-3xl p-4 sm:p-8 max-w-5xl mx-auto shadow-soft font-cairo">
-      
+
       {/* Header & Mode Switcher */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6 pb-4 border-b border-cream-300 gap-4">
         <div>
@@ -277,7 +272,7 @@ export const SoundButtonsActivity = ({ onFinish }) => {
 
       {/* Mode 1: Free Exploration Mode with Natural Real Photos */}
       {activeTabMode === 'explore' && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
@@ -300,12 +295,12 @@ export const SoundButtonsActivity = ({ onFinish }) => {
                 >
                   {/* Natural High-Res Animal Photo */}
                   <div className="w-full h-36 sm:h-40 rounded-2xl overflow-hidden relative shadow-inner border border-cream-200">
-                    <img 
-                      src={animal.image} 
-                      alt={animal.name} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                    <img
+                      src={animal.image}
+                      alt={animal.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    
+
                     {/* Soundwave Bar Animation when Playing */}
                     {isPlaying && (
                       <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px] flex items-center justify-center">
@@ -369,7 +364,7 @@ export const SoundButtonsActivity = ({ onFinish }) => {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {quizCandidates.map((candidate) => {
               const isSelected = selectedCandidateId === candidate.id;
-              
+
               let borderStyle = "border-cream-300";
               if (isSelected && quizFeedback === 'correct') {
                 borderStyle = "border-emerald-500 bg-emerald-50 ring-4 ring-emerald-300";
@@ -386,10 +381,10 @@ export const SoundButtonsActivity = ({ onFinish }) => {
                   className={`bg-white border-2 ${borderStyle} rounded-3xl p-3 flex flex-col items-center justify-center gap-2.5 shadow-soft hover:shadow-md transition-all cursor-pointer relative overflow-hidden group`}
                 >
                   <div className="w-full h-36 rounded-2xl overflow-hidden shadow-inner border border-cream-200">
-                    <img 
-                      src={candidate.image} 
-                      alt={candidate.name} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                    <img
+                      src={candidate.image}
+                      alt={candidate.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
 

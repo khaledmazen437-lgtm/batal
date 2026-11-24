@@ -7,7 +7,7 @@ export const CupsShellEyeActivity = ({ onFinish }) => {
   const { playCalmTone, playCustomSound, markActivityComplete, addStar, speakArabic, playWrongFeedback } = useSensory();
 
   const [score, setScore] = useState(0);
-  const [winningCup, setWinningCup] = useState(1); 
+  const [winningCup, setWinningCup] = useState(1);
   const [revealedCup, setRevealedCup] = useState(null);
   const [isShuffling, setIsShuffling] = useState(false);
   const [winsCount, setWinsCount] = useState(0);
@@ -154,7 +154,7 @@ export const CupsShellEyeActivity = ({ onFinish }) => {
                   style={{ left: `${p.x}%`, top: `${p.y}%` }}
                   className="absolute text-xl pointer-events-none select-none z-30"
                 >
-                 
+
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -220,7 +220,7 @@ export const CupsShellEyeActivity = ({ onFinish }) => {
                             animate={{ scale: 1.4 }}
                             className="absolute -bottom-8 bg-amber-400 text-amber-950 p-2 rounded-full shadow-lg border border-white z-20"
                           >
-                            
+
                           </motion.div>
                         )}
                       </AnimatePresence>

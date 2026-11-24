@@ -23,7 +23,6 @@ export const SandDrawingActivity = ({ onFinish }) => {
 
   const currentShape = sandShapes[activeShapeIdx];
 
-  // Canvas drawing setup
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;

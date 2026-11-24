@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Music, 
-  Tv, 
-  Heart, 
-  Play, 
-  Pause, 
-  Volume2, 
-  BookOpen, 
-  CheckCircle2, 
-  Sparkles, 
-  ArrowRight, 
-  Headphones, 
-  Video, 
+import {
+  Music,
+  Tv,
+  Heart,
+  Play,
+  Pause,
+  Volume2,
+  BookOpen,
+  CheckCircle2,
+  Sparkles,
+  ArrowRight,
+  Headphones,
+  Video,
   Users,
   ExternalLink,
   ShieldCheck,
@@ -311,7 +311,6 @@ export const SensoryMediaParentHub = () => {
   const activeNodesRef = useRef([]);
   const activeIntervalRef = useRef(null);
 
-  // Stop Web Audio playback cleanly
   const stopAudioSynth = () => {
     if (activeIntervalRef.current) {
       clearInterval(activeIntervalRef.current);

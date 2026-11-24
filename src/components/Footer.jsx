@@ -8,15 +8,15 @@ export const Footer = ({ setCurrentTab }) => {
   return (
     <footer className="bg-white border-t border-gray-200 pt-12 pb-8 text-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          
+
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <span className="text-3xl font-black font-cairo text-burgundy-950 tracking-tight">
                 بَـطَـل
               </span>
-             
+
             </div>
             <p className="text-xs text-gray-600 leading-relaxed">
               المنصة الرقمية الأولى لدعم وتأهيل ذوي طيف التوحد، تقدم برامج وأنشطة تفاعلية مدروسة حسياً لتطوير مهارات التفكير والسلوك.
@@ -27,25 +27,25 @@ export const Footer = ({ setCurrentTab }) => {
             <h4 className="font-bold text-sm font-cairo text-gray-900">روابط سريعة</h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button 
-                  onClick={() => { setCurrentTab('home'); playCalmTone('gentle-tap'); }} 
+                <button
+                  onClick={() => { setCurrentTab('home'); playCalmTone('gentle-tap'); }}
                   className="hover:text-burgundy-900 transition-colors"
                 >
                   الرئيسية
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => { setCurrentTab('activities'); playCalmTone('gentle-tap'); }} 
+                <button
+                  onClick={() => { setCurrentTab('activities'); playCalmTone('gentle-tap'); }}
                   className="hover:text-burgundy-900 font-bold text-burgundy-900 flex items-center gap-1 transition-colors"
                 >
                   <span>عالم الطفل والأنشطة </span>
                 </button>
               </li>
               <li>
-                <a 
+                <a
                   href="#faq-section"
-                  onClick={() => { setCurrentTab('home'); playCalmTone('gentle-tap'); }} 
+                  onClick={() => { setCurrentTab('home'); playCalmTone('gentle-tap'); }}
                   className="hover:text-burgundy-900 transition-colors"
                 >
                   الأسئلة الشائعة
@@ -63,10 +63,10 @@ export const Footer = ({ setCurrentTab }) => {
               </li>
               <li className="flex items-center gap-2">
                 <MessageCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <a 
-                  href="https://wa.me/201226935593" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://wa.me/201226935593"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-emerald-700 font-semibold underline decoration-emerald-300"
                   dir="ltr"
                 >
@@ -75,8 +75,8 @@ export const Footer = ({ setCurrentTab }) => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-burgundy-800 flex-shrink-0" />
-                <a 
-                  href="mailto:khaledmazen437@gamil.com" 
+                <a
+                  href="mailto:khaledmazen437@gamil.com"
                   className="hover:text-burgundy-900 font-medium"
                 >
                   khaledmazen437@gamil.com
